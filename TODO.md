@@ -17,3 +17,4 @@
 | Update Contributing.md to add things like style guide | Shahil, Saurabh, Hao, Zhuolin |
 | Create a plan to test the system | Saurabh, Shahil, Hao, Zhuolin |
 | Look and add other automated analysis tools | Hao |
+| Add different analysis types to the project | Shahil, Saurabh, Zhuolin, Hao |
