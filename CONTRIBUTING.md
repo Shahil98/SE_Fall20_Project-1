@@ -1,103 +1,80 @@
-# Contributing to SE-PROJECT-1
+# Contributing 
+when you want to contribute to this repository, please send us an email and tell us what you want to change. 
 
-:+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
+### Table Of Contents
+[Purpose of Contributing](#Purpose-of-Contributing)
 
-The following is a set of guidelines for contributing to CSC 510 Project 1 and its packages, which are hosted on the [GitHub project page](https://github.com/oaaky/SE_Fall20_Project-1.git). These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+[Code of Conduct](#Code-of-Conduct)
 
-#### Table Of Contents
+[Pull Request Submission Guidelines](#Pull-Request-Submission-Guidelines)
 
-[Code of Conduct](#code-of-conduct)
+[Style Guide](#Style-guide)
 
-[What should I know before I get started?](#what-should-i-know-before-i-get-started)
-
-[How Can I Contribute?](#how-can-i-contribute)
-  * [Reporting Bugs](#reporting-bugs)
-  * [Suggesting Enhancements](#suggesting-enhancements)
-  * [Your First Code Contribution](#your-first-code-contribution)
-  * [Pull Requests](#pull-requests)
-
-[Styleguides](#styleguides)
-  * [Coding Style](#coding-style)
-  * [Git Commit Messages](#git-commit-messages)
+## Purpose of Contributing
+* Maintain our product quality
+* Fix bugs and problems
+* Engage the community in working toward the best possible to our product
 
 ## Code of Conduct
+All contributors should abide by the [code of conduct](CODE-OF-CONDUCT.md). Please read this carefully before contributing.
 
-This project and everyone participating in it is governed by the [Code of Conduct](CODE-OF-CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [cagandhi97@gmail.com](mailto:cagandhi97@gmail.com).
+## Pull Request Submission Guidelines
+###  Install Git
+First thing first, you should install and configure the [Git](https://git-scm.com/) on your local machine.
 
-## What should I know before I get started?
+[Set Up Git](https://docs.github.com/en/github/getting-started-with-github/quickstart) is a good source for you to set up.
 
-This is a sample project that sets up some base project files for future work. Please look through the [README](README.md) file.
+###  Fork Our Repositroy
+To contribute code to our product, you must have a Github account so you could push code to your own fork and open Pull Requests in the [GitHub repository](https://github.com/Shahil98/SE_Fall20_Project-1)
 
-* For feature requests, please fork the repository, create a new branch with your feature changes and make a pull request. The maintainers will review the code change and merge it into the master branch once checks have successfully passed.
-* Provide documentation for the modifications in the code. It will be easier and quicker for the maintainers to review and approve your code if you have added meaningful comments to your code change.
+### Work On Your Own branch
+Once done and you have the code locally on the disk, you can get started. We advice to not work directly on the master branch, but to create a separate branch for each issue you are working on. That way you can easily switch between different work, and you can update each one for latest changes on upstream master individually.
+### Write Code
+For writing the code just follow our Python and JavaScript style guides. If there is something unclear of the style, just look at existing code which might help you to understand it better.
 
-## How Can I Contribute?
+## Style Guide 
 
-### Reporting Bugs
+### Python Style Guide
+* Use [Flake8](https://flake8.pycqa.org/en/latest/) as linter for Python codes
+* Give variable names as words in lowercase seperated by underscores for e.g. 'variable_name'
+* Give function names as words in lowercase seperated by underscores for e.g. 'function_name'
+* Use upper camel case to write class names for e.g. 'MyClass'
+* Try to select class, function and variable names that are meaningful wherever possible instead of using names like x, y, a etc
+* Comment as much as you can. Write comments for each function stating what it does, what are it's input parameters and what are it's outputs. An example for comments in a function can be seen below:
+```
+def add_function(num1, num2):
+    """
+    Function to add two integers.
 
-This section guides you through submitting a bug report. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, and find related reports :mag_right:.
+    Parameters
+    ----------
+    num1: int
+        first number
+    num2: int
+        second number
 
-Before creating bug reports, please check [this list](#before-submitting-a-bug-report) as you might find out that you don't need to create one. When you are creating a bug report, please include detailed information about the environment, package version numbers, OS and other information maintainers may find useful in reproducing and resolving issues quickly.
+    Returns
+    -------
+    sum
+        an integer which is the sum of input integers
+    """
 
-> **Note:** If you find a **Closed** issue that seems like it is the same thing that you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
+    sum = num1 + num2
+    return(sum)
+```
 
-#### Before Submitting A Bug Report
-
-Check that the bug does not exists because of any issue in your local environment. You might be able to find the cause of the problem and fix things yourself. If the problem has been reported **and the issue is still open**, add a comment to the existing issue instead of opening a new one.
-
-#### How Do I Submit A (Good) Bug Report?
-
-Explain the problem and include details to help maintainers reproduce the problem:
-
-* **Use a clear and descriptive title** for the issue to identify the problem.
-* **Describe the exact steps which reproduce the problem** in as many details as possible. When listing steps, **don't just say what you did, but explain how you did it**. 
-* **Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior.
-* **Explain which behavior you expected to see instead and why.**
-* **Include screenshots** that show the described steps and clearly demonstrate the problem.
-
-Include details about your configuration and environment:
-
-* **What's the name and version of the OS you're using**?
-* **Which packages do you have installed?** Check that issue is not present because of a local package.
-
-### Pull Requests
-
-The process described here has several goals:
-
-- Maintain the project's quality
-- Fix problems that are important to users
-- Engage the community in working toward the best possible Atom
-- Enable a sustainable system for project maintainers to review contributions
-
-Please follow these steps to have your contribution considered by the maintainers:
-
-1. Follow the [styleguides](#styleguides)
-2. After you submit your pull request, verify that the build is passing and the tests are successful.
-
-While the prerequisites above must be satisfied prior to having your pull request reviewed, the reviewer(s) may ask you to complete additional design work, tests, or other changes before your pull request can be ultimately accepted.
-
-## Styleguides
-
-### Coding Style
-
-* Use tab based indentation
-* Make sure variables representing constants such as `DATA_FOLDER` and `FILE_PATH` should be capitalized.
+### JavaScript Style Guide
+* Give variable names as words in lowercase seperated by underscores for e.g. 'model_json'
+* Use lower camel case to write function names for e.g. 'createKerasModel'
+* Try to select function and variable names that are meaningful wherever possible instead of using names like x, y, a etc
+* Use [js-beautify](https://github.com/beautify-web/js-beautify) as a code formatter. We are using 'Beautify' extension in VS Code which implements js-beautify and 'HTML-CSS-JS Prettify' extension in Sublime text editor which implements js-beautify.
 
 ### Git Commit Messages
 
 * Use the present tense ("Add feature" not "Added feature")
-* Use short, crisp and clear commit messages. It's easier to understand for everyone.
 * Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
-* Reference issues and pull requests liberally after the first line
-* When only changing documentation, include `[ci skip]` in the commit title
-* Consider starting the commit message with an applicable emoji:
-    * :art: `:art:` when improving the format/structure of the code
-    * :racehorse: `:racehorse:` when improving performance
-    * :memo: `:memo:` when writing docs
-    * :penguin: `:penguin:` when fixing something on Linux
-    * :apple: `:apple:` when fixing something on macOS
-    * :checkered_flag: `:checkered_flag:` when fixing something on Windows
-    * :bug: `:bug:` when fixing a bug
-    * :fire: `:fire:` when removing code or files
-    * :green_heart: `:green_heart:` when fixing the CI build
-    * :white_check_mark: `:white_check_mark:` when adding tests
+* Limit the first line to 72 characters or less
+
+    
+ ### Documentation Style Guide  
+   * Use [Markdown](https://daringfireball.net/projects/markdown/)
