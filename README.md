@@ -12,7 +12,7 @@
 
 - The developer can add the project deadlines to the plugin and the plugin can help developers stick to their goal by predicting the finish time of the project based on the data gathered from the user. Multiple developers can compete with each other through a leaderboard where a leaderboard will display the ranking of most productive developer and admin/manager can easily monitor the productivity of each and every developer with the help of a common interface.
 
-[![CodeTime Promo Video](https://img.youtube.com/vi/CL5W7C9Jw_c/0.jpg)](https://www.youtube.com/watch?v=Jq5fh_sGReY&feature=youtu.be)
+[![CodeTime Promo Video](https://raw.githubusercontent.com/Shahil98/SE_Fall20_Project-1/master/youtube.png)](https://www.youtube.com/watch?v=ihT-86GRh80&feature=youtu.be)
 
 
 ## Installation
