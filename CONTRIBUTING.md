@@ -67,7 +67,7 @@ def add_function(num1, num2):
 * Give variable names as words in lowercase seperated by underscores for e.g. 'model_json'
 * Use lower camel case to write function names for e.g. 'createKerasModel'
 * Try to select function and variable names that are meaningful wherever possible instead of using names like x, y, a etc
-* Use [js-beautify](https://github.com/beautify-web/js-beautify) as a code formatter. We are using 'Beautify' extension in VS Code which implements js-beautify.
+* Use [js-beautify](https://github.com/beautify-web/js-beautify) as a code formatter. We are using 'Beautify' extension in VS Code which implements js-beautify and 'HTML-CSS-JS Prettify' extension in Sublime text editor which implements js-beautify.
 
 ### Git Commit Messages
 
