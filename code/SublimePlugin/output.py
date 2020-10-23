@@ -14,7 +14,6 @@ from plotly import tools
 import platform
 import os
 
-
 def show_graphs():
 	if platform.system() == 'Windows':
 		DATA_FOLDER_PATH = os.path.join(os.getenv('APPDATA'), '.codeTime')
