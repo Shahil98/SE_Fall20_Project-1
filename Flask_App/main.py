@@ -10,5 +10,11 @@ def index():
     """
 
     return render_template("index.html", title="Code Time")
+
+@app.route("/insert_data",methods=["post"])
+def insert_data():
+	data = request.get_json()
+	print(data)
+	return render_template("index.html", title="Code Time")
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=8080)
