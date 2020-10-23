@@ -2,10 +2,8 @@
 [![DOI](https://zenodo.org/badge/295515546.svg)](https://zenodo.org/badge/latestdoi/295515546)
 [![Build Status](https://travis-ci.org/oaaky/SE_Fall20_Project-1.svg?branch=master)](https://travis-ci.org/oaaky/SE_Fall20_Project-1)
 [![GitHub license](https://img.shields.io/github/license/oaaky/SE_Fall20_Project-1)](https://github.com/oaaky/SE_Fall20_Project-1/blob/master/LICENSE)
-![GitHub](https://img.shields.io/badge/language-python-blue.svg)
 ![GitHub issues](https://img.shields.io/github/issues/oaaky/SE_Fall20_Project-1)
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/oaaky/SE_Fall20_Project-1)
-![YouTube Video Views](https://img.shields.io/youtube/views/CL5W7C9Jw_c?style=social)
 
 
 ## About CodeTime
@@ -14,9 +12,7 @@
 
 - The developer can add the project deadlines to the plugin and the plugin can help developers stick to their goal by predicting the finish time of the project based on the data gathered from the user. Multiple developers can compete with each other through a leaderboard where a leaderboard will display the ranking of most productive developer and admin/manager can easily monitor the productivity of each and every developer with the help of a common interface.
 
-[Project Requirement](https://github.com/oaaky/SE_Fall20_Project-1/blob/master/project_requiremnt.md) | [Architecture Diagram](https://github.com/oaaky/SE_Fall20_Project-1/blob/master/architecure.png) | [UI MockUps](https://github.com/oaaky/SE_Fall20_Project-1/blob/master/Capture.PNG) | [Current Working Dashboard](https://github.com/oaaky/SE_Fall20_Project-1/blob/master/CodeTimeDashboard.png)
-
-[![CodeTime Promo Video](https://img.youtube.com/vi/CL5W7C9Jw_c/0.jpg)](http://tiny.cc/codeTimePromo)
+[![CodeTime Promo Video](https://img.youtube.com/vi/CL5W7C9Jw_c/0.jpg)](https://www.youtube.com/watch?v=Jq5fh_sGReY&feature=youtu.be)
 
 
 ## Installation
@@ -71,20 +67,3 @@ For more information and guide on how to run tests, take a look at this [README.
 ## How to Contribute?
 
 Please take a look at our CONTRIBUTING.md where we provide instructions on contributing to the repo and taking the plugin development further.
-
-## What things have been done for Phase 1 ?
-- Created the design and architecture of the project
-- Implemented the logic to collect the data in background
-- Implemented the code to generate the graphs to analyse the time spent. ([Current Working Dashboard](https://github.com/oaaky/SE_Fall20_Project-1/blob/master/CodeTimeDashboard.png))
-- Integrated the code with sublime text editor
-- Unit tests
-- Build and Packaging of the plugin
-
-## What things are planned for Phase 2?
-
-- The data generated will be sent to server.
-- Local data analysis will be shifted to server based dashboard.
-- Slack notification of weekly report to user will be sent through server.
-- Leaderboard based on user's usage of files.
-- Adding support for other editors such as visual code.
-- Possible realtime analysis of the user's file.
