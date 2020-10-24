@@ -1,4 +1,4 @@
-pytest
+pytest==6.0.1
 plotly
-flake8
+pytest-flake8
 requests==2.8.1

@@ -1,6 +1,6 @@
 import json
 from json import JSONEncoder
-from SublimePlugin.periodicLogSaver import PeriodicLogSaver
+from code.SublimePlugin.periodicLogSaver import PeriodicLogSaver
 
 
 class TestClass:
