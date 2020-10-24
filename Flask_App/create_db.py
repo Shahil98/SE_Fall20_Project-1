@@ -24,10 +24,11 @@ def _create_tables(db):
     db.commit()
     cursor.execute("""CREATE TABLE Dashboard(
     uid VARCHAR(200),
-    file_name VARCHAR(200) NOT NULL,
+    file_name VARCHAR(500) NOT NULL,
     start_date DATETIME,
     end_date DATETIME,
-    PRIMARY KEY(uid),
+    file_type VARCHAR(100),
+    PRIMARY KEY(uid,file_name,start_date,end_date),
     FOREIGN KEY (uid) REFERENCES Users(uid) ON DELETE CASCADE
 );""")
     db.commit()

@@ -2,8 +2,8 @@ def add_data_dashboard(db, data):
     cursor = db.cursor()
     for row in data.values():
         cursor.execute("INSERT INTO "
-                       "Dashboard(user_id, file_name, start_date, end_date) "
-                       "VALUES(%s,%s,%s,%s)", row)
+                       "Dashboard(user_id, file_name, start_date, end_date,file_type) "
+                       "VALUES(%s,%s,%s,%s,%s)", row)
     db.commit()
     cursor.close()
 
