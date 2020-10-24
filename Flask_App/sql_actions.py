@@ -16,15 +16,17 @@ def add_data_users(db, data):
     cursor.close()
 
 
-def retrieve_data(db, some_id):
+def retrieve_data_table_chart(db, some_id):
     cursor = db.cursor()
-    qry1 = "SELECT * FROM Dashboard WHERE user_id=%s"
-    cursor.execute(qry1, (some_id,))
-    # user_id, file_name, start_date, end_date
+    qry1 = "SELECT D.uid, D.file_name, DIFF(D.start_date,D.end_date) FROM Dashboard D WHERE user_id={} Group by D.uid,D.file_name".format(some_id)
+    cursor.execute(qry1)
     records = cursor.fetchall()
-    for row in records:
-        print("User ID: ", row[0])
-        print("File Name: ", row[1])
-        print("Start Date and Time: ", row[2])
-        print("End Date and Time: ", row[3], "\n")
+    return records
+
+
+def retrieve_data_pie_chart(db, some_id):
+    cursor = db.cursor()
+    qry1 = "SELECT D.uid,D.file_type,D.Count(D.file_type) FROM Dashboard D WHERE D.uid={} Group by D.file_type".format(some_id)
+    cursor.execute(qry1)
+    records = cursor.fetchall()
     return records
