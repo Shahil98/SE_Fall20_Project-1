@@ -4,6 +4,7 @@ import mysql.connector
 import sql_actions
 import datetime
 import uuid
+db = mysql.connector.connect(host='localhost', database='code_time', user='root', password='codetime')
 
 app = Flask(__name__)
 
@@ -25,8 +26,9 @@ def insert_data():
 
 
 @app.route('/signup', methods=['GET'])
-def signup(db):
+def signup():
     unique_id = uuid.uuid4()
+    unique_id = str(unique_id)
     sql_actions.add_data_users(db, unique_id)
     return unique_id
 
@@ -46,10 +48,10 @@ def send(db, user_id):
 
 
 if __name__ == "__main__":
-    try:
-        db = mysql.connector.connect(host='localhost', database='code_time', user='root', password='codetime')
-    except mysql.connector.Error as e:
-        print(e)
+   # try:
+   #     db = mysql.connector.connect(host='localhost', database='code_time', user='root', password='codetime')
+   # except mysql.connector.Error as e:
+   #     print(e)
     server_ip = '0.0.0.0'
-    server_port = '8080'
+    server_port = 8080
     app.run(host=server_ip, port=server_port, debug=True)
