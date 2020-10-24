@@ -4,58 +4,62 @@ import copy
 import sublime
 from datetime import datetime as dt
 import sys
-
+import json
+import requests
+import mimetypes
 
 class PeriodicLogSaver(threading.Thread):
 
-	def __init__(self, group=None, target=None, name=None,
-					args=(), kwargs=None, verbose=None):  # noqa: E128
-		super(PeriodicLogSaver, self).__init__(group=group, target=target, name=name)
-		self.args = args
-		self.kwargs = kwargs
-		return
+    def __init__(self, group=None, target=None, name=None, args=(), kwargs=None, verbose=None):  # noqa: E128
+        super(PeriodicLogSaver, self).__init__(
+            group=group, target=target, name=name)
+        self.args = args
+        self.kwargs = kwargs
+        return
 
-	def run(self):
-		while True:
-			try:
-				curr_file = sublime.active_window().active_view().file_name()
-				curr_date = dt.now().strftime('%Y-%m-%d')
+    def run(self):
+        while True:
+            print("In periodic log saver")
+            try:
+                curr_file = sublime.active_window().active_view().file_name()
 
-				if curr_file is not None:
-					inMemoryLogDeepCopy = copy.deepcopy(self.kwargs['inMemoryLog'])
-					inMemoryLog = self.kwargs['inMemoryLog']
-					inMemoryLog.clear()
+                if curr_file is not None:
+                    inMemoryLogDeepCopy = copy.deepcopy(
+                        self.kwargs['inMemoryLog'])
+                    inMemoryLog = self.kwargs['inMemoryLog']
+                    inMemoryLog.clear()
 
-					if curr_date in inMemoryLogDeepCopy and curr_file in inMemoryLogDeepCopy[curr_date]:  # noqa: E501
-						end_time = time.time()
-						inMemoryLogDeepCopy[curr_date][curr_file][-1][1] = end_time
+                    if curr_file in inMemoryLogDeepCopy:  # noqa: E501
+                        end_time = dt.now().strftime('%Y-%m-%d %H:%M:%S')
+                        inMemoryLogDeepCopy[curr_file][-1][1] = end_time
 
-						if curr_date not in inMemoryLog:
-							inMemoryLog[curr_date] = {}
+                        if curr_file not in inMemoryLog:
+                            inMemoryLog[curr_file] = [[end_time, None]]
 
-						if curr_file not in inMemoryLog[curr_date]:
-							inMemoryLog[curr_date][curr_file] = [[end_time, None]]
-						# else: # do we need this?
-						# 	inMemoryLog[curr_date][curr_file].append([start_time, end_time])
+                        self.write_log_file(inMemoryLogDeepCopy)
+                time.sleep(self.kwargs['timeout'])
+            except Exception as e:
+                exc_type, exc_obj, exc_tb = sys.exc_info()
+                print("periodicLogSaver:PeriodicLogSaver:run(): {error} on line number: {lno}".format(error=str(e), lno=str(exc_tb.tb_lineno)))  # noqa: E501
 
-						self.write_log_file(inMemoryLogDeepCopy)
-				time.sleep(self.kwargs['timeout'])
-			except Exception as e:
-				exc_type, exc_obj, exc_tb = sys.exc_info()
-				print("periodicLogSaver:PeriodicLogSaver:run(): {error} on line number: {lno}".format(error=str(e), lno=str(exc_tb.tb_lineno)))  # noqa: E501
+    def write_log_file(self, file_times_dict):
+        try:
+            json_insert_data = {}
+            json_insert_data["data"] = []
+            for file_name in file_times_dict.keys():
+                file_type = mimetypes.guess_type(file_name)
+                if file_type[0] is not None:
+                    file_type = file_type[0].split("/")[-1].split("-")[-1]
+                else:
+                    file_type = "other"
+                for i in range(len(file_times_dict[file_name])):
+                    json_insert_data["data"].append({"file_name": file_name, "file_type": file_type,
+                                                     "start_time": file_times_dict[file_name][i][0], "end_time": file_times_dict[file_name][i][1]})
+                    json_insert_data = json.dumps(json_insert_data)
+                    print(json_insert_data)
+                    requests.post(
+                        "http://152.46.17.237:8080/insert_data", json=json_insert_data)
 
-	def write_log_file(self, file_times_dict):
-		try:
-
-			with open(self.kwargs['LOG_FILE_PATH'], 'a') as f:
-				for key, val in file_times_dict.items():
-					curr_date = key
-					file_dict = val
-
-					for file_name, times_list in file_dict.items():
-						for time_start_end in times_list:
-							f.write(curr_date + ',' + file_name + ',' + str(time_start_end[0]) + ',' + str(time_start_end[1]) + '\n')  # noqa: E501
-
-		except Exception as e:
-			exc_type, exc_obj, exc_tb = sys.exc_info()
-			print("periodicLogSaver:PeriodicLogSaver():write_log_file(): {error} on line number: {lno}".format(error=str(e), lno=str(exc_tb.tb_lineno)))  # noqa: E501
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            print("periodicLogSaver:PeriodicLogSaver():write_log_file(): {error} on line number: {lno}".format(error=str(e), lno=str(exc_tb.tb_lineno)))  # noqa: E501
