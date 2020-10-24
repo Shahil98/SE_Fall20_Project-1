@@ -1,5 +1,4 @@
 pytest
 plotly
 flake8
-mysql-connector-python==1.0.12
 requests==2.8.1
