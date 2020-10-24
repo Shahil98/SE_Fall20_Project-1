@@ -1,6 +1,6 @@
 def add_data_dashboard(db, data):
     cursor = db.cursor()
-    for row in data:
+    for row in data.values():
         cursor.execute("INSERT INTO "
                        "Dashboard(user_id, file_name, start_date, end_date) "
                        "VALUES(%s,%s,%s,%s)", row)
@@ -18,9 +18,8 @@ def add_data_users(db, data):
 
 def retrieve_data(db, some_id):
     cursor = db.cursor()
-    qry1 = ("SELECT * FROM Dashboard WHERE user_id=%s")
-    data = (some_id,)
-    cursor.execute(qry1,data)
+    qry1 = "SELECT * FROM Dashboard WHERE user_id=%s"
+    cursor.execute(qry1, (some_id,))
     # user_id, file_name, start_date, end_date
     records = cursor.fetchall()
     for row in records:
