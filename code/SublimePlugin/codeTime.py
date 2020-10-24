@@ -125,15 +125,16 @@ class CustomEventListener(sublime_plugin.EventListener):
 
             file_name = view.file_name()
             end_time = dt.now().strftime('%Y-%m-%d %H:%M:%S')
-            if file_name is not None and file_name in file_times_dict.keys():
-                last_time = file_times_dict[file_name][-1][1]
-
-                if last_time is None:
-                    last_time = end_time
-
+            if file_name is not None and file_name in file_times_dict:
+                if file_times_dict[file_name][-1][1] is None:
+                    file_times_dict[file_name][-1][1] = end_time
                 json_insert_data = {}
                 json_insert_data["data"] = []
                 file_type = mimetypes.guess_type(file_name)
+                if file_type[0] is not None:
+                    file_type = file_type[0].split("/")[-1].split("-")[-1]
+                else:
+                    file_type = "other"
                 for i in range(len(file_times_dict[file_name])):
                     json_insert_data["data"].append({"file_name": file_name, "file_type": file_type,
                                                      "start_time": file_times_dict[file_name][i][0], "end_time": file_times_dict[file_name][i][1]})
@@ -141,6 +142,7 @@ class CustomEventListener(sublime_plugin.EventListener):
                 print(json_insert_data)
                 requests.post("http://152.46.17.237:8080/insert_data",
                               json=json_insert_data)
+                file_times_dict.pop(file_name)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
             print("codeTime:CustomEventListener():on_close() {error} on line number: {lno}".format(error=str(e), lno=str(exc_tb.tb_lineno)))  # noqa: E501
