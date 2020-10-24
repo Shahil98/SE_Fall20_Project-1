@@ -38,7 +38,7 @@ def signup():
 
 @app.route('/dashboard/<user_id>', methods=['GET'])
 def dashboard(db, user_id):
-    display_data = sql_actions.retrieve_data(db, user_id)
+    display_data = sql_actions.retrieve_data(db, str(user_id))
     # [(user_id, file_name, start_date, end_date)]
     # Graph Plot Function
     x_left = []
