@@ -2,3 +2,4 @@ pytest==6.0.1
 plotly
 pytest-flake8
 requests==2.8.1
+sublime
