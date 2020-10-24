@@ -25,7 +25,7 @@ def insert_data():
 
 
 @app.route('/signup', methods=['GET'])
-def signup(db):
+def signup():
     unique_id = uuid.uuid4()
     sql_actions.add_data_users(db, unique_id)
     return unique_id
