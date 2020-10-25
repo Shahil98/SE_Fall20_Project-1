@@ -90,6 +90,7 @@ def send():
     send_list = json.loads(send_list)
     print(send_list, type(send_list))
     sql_actions.add_data_dashboard(db, send_list)
+    return "Data added"
 
 
 if __name__ == "__main__":
