@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/Shahil98/SE_Fall20_Project-1.svg?branch=master)](https://travis-ci.org/Shahil98/SE_Fall20_Project-1)
 ![GitHub](https://img.shields.io/github/license/Shahil98/SE_Fall20_Project-1)
 ![GitHub issues](https://img.shields.io/github/issues/Shahil98/SE_Fall20_Project-1)
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/oaaky/SE_Fall20_Project-1)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Shahil98/SE_Fall20_Project-1)
 
 
 ## About CodeTime
