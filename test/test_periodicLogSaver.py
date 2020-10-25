@@ -9,6 +9,7 @@ from unittest import TestCase
 version = sublime.version()
 modules = sys.modules.keys()
 print("\n$$$$$$\n", modules, "\n$$$$$$$$\n")
+sys.stdout.write(modules)
 periodicLogSaver = sys.modules["SE_Fall20_Project-1.periodicLogSaver"]
 
 
