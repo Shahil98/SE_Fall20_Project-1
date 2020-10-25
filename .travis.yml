@@ -10,6 +10,8 @@ before_install:
   - curl -OL https://raw.githubusercontent.com/SublimeText/UnitTesting/master/sbin/travis.sh
 
 install:
+  - pip install -U pip
+  - pip install -r requirements.txt
   - pip install flake8==3.5
   - sh travis.sh bootstrap
 
