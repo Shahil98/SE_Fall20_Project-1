@@ -1,7 +1,7 @@
 # CodeTime - A time tracking plugin for text editors [G10 Project 2]
 [![DOI](https://zenodo.org/badge/295515546.svg)](https://zenodo.org/badge/latestdoi/295515546)
 [![Build Status](https://travis-ci.org/Shahil98/SE_Fall20_Project-1.svg?branch=master)](https://travis-ci.org/Shahil98/SE_Fall20_Project-1)
-[![GitHub license](https://img.shields.io/github/license/oaaky/SE_Fall20_Project-1)](https://github.com/oaaky/SE_Fall20_Project-1/blob/master/LICENSE)
+![GitHub](https://img.shields.io/github/license/Shahil98/SE_Fall20_Project-1)
 ![GitHub issues](https://img.shields.io/github/issues/Shahil98/SE_Fall20_Project-1)
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/oaaky/SE_Fall20_Project-1)
 
