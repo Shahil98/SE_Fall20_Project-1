@@ -8,31 +8,22 @@ import matplotlib.pyplot as plt
 from flask_bootstrap import Bootstrap
 from forms import signupForm
 import os
-
-
 db = mysql.connector.connect(host='localhost', database='code_time', user='root', password='codetime')
 app = Flask(__name__, static_url_path='/static')
 bootstrap = Bootstrap(app)
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
-
-
 @app.route("/")
 def index():
     """
     Function to render index.html when a request is made to "/".
     """
-
     return render_template("index.html", title="Code Time")
-
-
 @app.route("/insert_data", methods=["post"])
 def insert_data():
     data = request.get_json()
     print(data)
     return render_template("index.html", title="Code Time")
-
-
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = signupForm()
@@ -45,8 +36,6 @@ def signup():
     unique_id = str(unique_id)
     sql_actions.add_data_users(db, unique_id)
     return render_template('login.html', form=form)
-
-
 @app.route('/dashboard/<uid>', methods=['GET'])
 def dashboard(uid):
     chart_data = sql_actions.retrieve_data_table_chart(db, uid)
@@ -56,14 +45,12 @@ def dashboard(uid):
     table_data = []
     for item in chart_data:
         table_data.append((item[1], float(item[2])))
-
     fig, axs = plt.subplots()
     collabel = ("File Name", "Time Spend")
     fig.patch.set_visible(False)
     axs.table(cellText=table_data, colLabels=collabel, loc='center')
     plt.show()
     plt.savefig('Flask_App/static/images/table_chart.png')
-
     pie_file_types = []
     pie_file_total = []
     # create pie chart
@@ -77,16 +64,12 @@ def dashboard(uid):
     plt.savefig('Flask_App/static/images/pie_chart.png')
     return render_template('dashboard.html', url='/static/images/')
     # return render_template('dashboard.html')
-
-
 @app.route('/send', methods=['POST'])
 def send(db, user_id):
     send_list = request.get_json(force=True)
     print(send_list)
     send_list = send_list.get_json()
     sql_actions.add_data_dashboard(db, send_list)
-
-
 if __name__ == "__main__":
     server_ip = '0.0.0.0'
     server_port = 8080
