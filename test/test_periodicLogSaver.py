@@ -8,7 +8,7 @@ from unittest import TestCase
 
 version = sublime.version()
 
-periodicLogSaver = sys.modules["SE_Fall20_Project-1.code.SublimePlugin.periodicLogSaver"]
+periodicLogSaver = sys.modules["SE_Fall20_Project-1.SublimePlugin.periodicLogSaver"]
 
 
 class TestPeriodicLogSaver(TestCase):
