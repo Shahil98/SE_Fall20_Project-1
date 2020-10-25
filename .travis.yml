@@ -16,8 +16,8 @@ install:
   - sh travis.sh bootstrap
 
 script:
-#  - flake8 --max-line-length=150
+  - flake8 --max-line-length=150
   - sh travis.sh run_tests
-  - pytest --flake8
+#  - pytest --flake8
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 17641d65-2d77-4153-aa62-6e0d013e1c44
