@@ -3,5 +3,5 @@ plotly
 pytest-flake8
 requests==2.8.1
 sublime
-flask-wtf
-flask-bootstrap
+#flask-wtf
+#flask-bootstrap
