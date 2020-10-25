@@ -6,7 +6,7 @@ from unittest import TestCase
 from unittest.mock import Mock, patch
 
 version = sublime.version()
-codeTime = sys.modules["code.SublimePlugin.codeTime"]
+codeTime = sys.modules["SE_Fall20_Project-1.code.SublimePlugin.codeTime"]
 
 
 class TestFunctions(TestCase):
