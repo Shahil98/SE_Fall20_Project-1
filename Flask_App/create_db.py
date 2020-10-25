@@ -44,6 +44,6 @@ if __name__ == '__main__':
     db = mysql.connector.connect(host='localhost',
                                  database='code_time',
                                  user='root',
-                                 password='codetime')
+                                 password='')
 
     load_demo_data(db)

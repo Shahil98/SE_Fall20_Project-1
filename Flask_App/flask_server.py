@@ -1,15 +1,20 @@
 import requests
-from flask import request, Flask, jsonify, render_template
+from flask import request, Flask, jsonify, render_template, redirect, url_for
 import mysql.connector
 import sql_actions
 import datetime
 import uuid
 import matplotlib.pyplot as plt
+from flask_bootstrap import Bootstrap
+from forms import signupForm
+import os
 
-db = mysql.connector.connect(host='localhost', database='code_time', user='root', password='codetime')
 
+db = mysql.connector.connect(host='localhost', database='code_time', user='root', password='')
 app = Flask(__name__)
-
+bootstrap = Bootstrap(app)
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route("/")
 def index():
@@ -27,17 +32,24 @@ def insert_data():
     return render_template("index.html", title="Code Time")
 
 
-@app.route('/signup', methods=['GET'])
+@app.route('/signup', methods=['GET','POST'])
 def signup():
+    form = signupForm()
+    #if user click submit on signup page
+    if form.validate_on_submit():
+        uid = form.uid.data
+        print(uid)
+        dashboard(user_id=uid)
+
     unique_id = uuid.uuid4()
     unique_id = str(unique_id)
     sql_actions.add_data_users(db, unique_id)
     return_id = {"your_id": unique_id}
-    return return_id
+    return render_template('login.html', form=form)
 
 
-@app.route('/dashboard/<user_id>', methods=['GET'])
-def dashboard(db, user_id):
+@app.route('/dashboard', methods=['GET'])
+def dashboard(user_id):
     display_data = sql_actions.retrieve_data(db, user_id)
     # [(user_id, file_name, start_date, end_date)]
     # Graph Plot Function
@@ -54,7 +66,8 @@ def dashboard(db, user_id):
     plt.ylabel('Time Worked')
     plt.title(display_data[0][0])
     plt.savefig('static/images/plot.png')
-    return render_template('plot.html', url='/static/images/plot.png')
+    return '1111'
+    #return render_template('dashboard.html')
 
 
 @app.route('/send', methods=['POST'])

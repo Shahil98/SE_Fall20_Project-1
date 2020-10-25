@@ -4,3 +4,5 @@ flake8
 black
 mysql-connector-python==1.0.12
 requests==2.8.1
+flask-wtf
+flask-bootstrap
