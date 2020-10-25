@@ -11,6 +11,7 @@ file_times_dict = {}
 periodic_log_save_timeout = 300  # seconds
 periodic_log_save_on = True
 
+
 def when_activated(view):
     """
     Function to log start timestamp when a window is activated.
@@ -138,7 +139,7 @@ class CustomEventListener(sublime_plugin.EventListener):
 
 
 def plugin_loaded():
-    
+
     print("Plugin Loaded")
     try:
         if periodic_log_save_on:

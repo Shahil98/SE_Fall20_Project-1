@@ -1,8 +1,6 @@
-import requests
-from flask import request, Flask, jsonify, render_template, redirect, url_for
+from flask import request, Flask, render_template, redirect, url_for
 import mysql.connector
 import sql_actions
-import datetime
 import uuid
 import matplotlib.pyplot as plt
 from flask_bootstrap import Bootstrap
