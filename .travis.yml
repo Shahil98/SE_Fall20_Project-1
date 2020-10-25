@@ -16,7 +16,7 @@ install:
   - sh travis.sh bootstrap
 
 script:
-  - flake8 --max-line-length=150 --ignore=E501,W291,E722,E226
+  - flake8 --ignore=E501,W291,E722,E226
   - sh travis.sh run_tests
 #  - pytest --flake8
 after_success:

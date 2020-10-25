@@ -6,6 +6,8 @@ from unittest import TestCase
 from unittest.mock import Mock, patch
 
 version = sublime.version()
+modules = sys.modules.keys()
+print("\n$$$$$$\n", modules, "\n$$$$$$$$\n")
 codeTime = sys.modules["SE_Fall20_Project-1.code.SublimePlugin.codeTime"]
 
 
