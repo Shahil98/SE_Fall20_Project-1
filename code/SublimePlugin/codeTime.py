@@ -1,20 +1,10 @@
 import sublime_plugin
-import platform
-import os
 from datetime import datetime as dt
 import sys
 import requests
 from .periodicLogSaver import PeriodicLogSaver
 import json
 import mimetypes
-# create data folder based on OS
-if platform.system() == 'Windows':
-    DATA_FOLDER_PATH = os.path.join(os.getenv('APPDATA'), '.codeTime')
-else:
-    DATA_FOLDER_PATH = os.path.join(os.path.expanduser('~'), '.codeTime')
-
-if not os.path.exists(DATA_FOLDER_PATH):
-    os.makedirs(DATA_FOLDER_PATH)
 
 # define local variables
 file_times_dict = {}
@@ -149,6 +139,8 @@ class CustomEventListener(sublime_plugin.EventListener):
 
 
 def plugin_loaded():
+
+    print("Plugin Loaded")
     try:
         if periodic_log_save_on:
             periodcLogSaver = PeriodicLogSaver(kwargs={'inMemoryLog': file_times_dict, 'timeout': periodic_log_save_timeout})  # noqa: E501

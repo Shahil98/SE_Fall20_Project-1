@@ -1,3 +1,9 @@
 {
-	"tests_dir" : "test"
+	"tests_dir": "test",
+	"pattern": "test*.py",
+	"async": false,
+	"deferred": false,
+	"verbosity": 2,
+	"capture_console": false,
+	"output": null
 }

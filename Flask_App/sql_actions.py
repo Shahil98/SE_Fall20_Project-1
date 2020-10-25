@@ -8,7 +8,7 @@ def add_data_dashboard(db, data):
         file_type = row['file_type']
         cursor.execute("INSERT INTO "
                        "Dashboard(uid, file_name, start_date, end_date,file_type) "
-                       "VALUES(%s,%s,%s,%s,%s)", (uid, file_name, start_date, end_date,file_type,))
+                       "VALUES(%s,%s,%s,%s,%s)", (uid, file_name, start_date, end_date, file_type,))
     db.commit()
     cursor.close()
 
