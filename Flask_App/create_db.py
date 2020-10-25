@@ -27,7 +27,8 @@ def _create_tables(db):
     file_name VARCHAR(200) NOT NULL,
     start_date DATETIME,
     end_date DATETIME,
-    PRIMARY KEY(uid),
+    file_type VARCHAR(20),
+    PRIMARY KEY(uid,file_name,start_date,end_date),
     FOREIGN KEY (uid) REFERENCES Users(uid) ON DELETE CASCADE
 );""")
     db.commit()
@@ -44,6 +45,6 @@ if __name__ == '__main__':
     db = mysql.connector.connect(host='localhost',
                                  database='code_time',
                                  user='root',
-                                 password='')
+                                 password='codetime')
 
     load_demo_data(db)

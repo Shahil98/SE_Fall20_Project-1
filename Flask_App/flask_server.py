@@ -10,7 +10,7 @@ from forms import signupForm
 import os
 
 
-db = mysql.connector.connect(host='localhost', database='code_time', user='root', password='')
+db = mysql.connector.connect(host='localhost', database='code_time', user='root', password='codetime')
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 SECRET_KEY = os.urandom(32)
@@ -39,7 +39,7 @@ def signup():
     if form.validate_on_submit():
         uid = form.uid.data
         print(uid)
-        dashboard(user_id=uid)
+        return redirect(url_for('dashboard', uid=uid))
 
     unique_id = uuid.uuid4()
     unique_id = str(unique_id)
@@ -48,9 +48,9 @@ def signup():
     return render_template('login.html', form=form)
 
 
-@app.route('/dashboard', methods=['GET'])
-def dashboard(user_id):
-    display_data = sql_actions.retrieve_data(db, user_id)
+@app.route('/dashboard/<uid>', methods=['GET'])
+def dashboard(uid):
+    display_data = sql_actions.retrieve_data(db, uid)
     # [(user_id, file_name, start_date, end_date)]
     # Graph Plot Function
     x_left = []
@@ -65,8 +65,8 @@ def dashboard(user_id):
     plt.xlabel('Files')
     plt.ylabel('Time Worked')
     plt.title(display_data[0][0])
-    plt.savefig('static/images/plot.png')
-    return '1111'
+    #plt.savefig('static/images/plot.png')
+    return render_template('dashboard.html')
     #return render_template('dashboard.html')
 
 

@@ -18,7 +18,7 @@ def add_data_users(db, data):
 
 def retrieve_data(db, some_id):
     cursor = db.cursor()
-    qry1 = "SELECT * FROM Dashboard WHERE user_id=%s"
+    qry1 = "SELECT * FROM Dashboard WHERE uid=%s"
     cursor.execute(qry1, (some_id,))
     # user_id, file_name, start_date, end_date
     records = cursor.fetchall()
