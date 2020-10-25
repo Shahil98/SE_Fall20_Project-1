@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from flask_bootstrap import Bootstrap
 from forms import signupForm
 import os
+import json
 
 
 db = mysql.connector.connect(host='localhost', database='code_time', user='root', password='codetime')
@@ -32,18 +33,24 @@ def insert_data():
     return render_template("index.html", title="Code Time")
 
 
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
+@app.route('/login', methods=['GET', 'POST'])
+def login():
     form = signupForm()
     # if user click submit on signup page
     if form.validate_on_submit():
         uid = form.uid.data
         print(uid)
         return redirect(url_for('dashboard', uid=uid))
+    return render_template('login.html', form=form)
+
+
+@app.route('/signup', methods=['GET'])
+def signup():
     unique_id = uuid.uuid4()
     unique_id = str(unique_id)
     sql_actions.add_data_users(db, unique_id)
-    return render_template('login.html', form=form)
+    return_data = {"your_id": unique_id}
+    return json.dumps(return_data)
 
 
 @app.route('/dashboard/<uid>', methods=['GET'])
