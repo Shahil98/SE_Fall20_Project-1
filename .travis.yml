@@ -14,7 +14,7 @@ install:
   - sh travis.sh bootstrap
 
 script:
-  - flake8 --max-line-length=150
+#  - flake8 --max-line-length=150
   - sh travis.sh run_tests
   - pytest --flake8
 after_success:
