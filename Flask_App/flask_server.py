@@ -66,7 +66,7 @@ def dashboard(uid):
     collabel = ("File Name", "Time Spend")
     fig.patch.set_visible(False)
     axs.table(cellText=table_data, colLabels=collabel, loc='center')
-    plt.show()
+    #plt.show()
     plt.savefig('static/table_chart.png')
     pie_file_types = []
     pie_file_total = []
@@ -78,7 +78,7 @@ def dashboard(uid):
     plt.figure(figsize=(10, 7))
     plt.pie(pie_file_total, labels=pie_file_types, autopct='%.2f')
     # show plot
-    plt.show()
+    #plt.show()
     plt.savefig('static/pie_chart.png')
     return render_template('dashboard.html')
     # return render_template('dashboard.html')
