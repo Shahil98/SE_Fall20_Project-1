@@ -6,23 +6,22 @@ import os
 from unittest import TestCase
 # from unittest.mock import Mock, patch
 
-
-periodicLoSaver = sys.modules["CodeTime.SublimePlugin.periodicLogSaver"]
 version = sublime.version()
+
+periodicLogSaver = sys.modules["CodeTime.code.SublimePlugin.periodicLogSaver"]
 
 
 class TestPeriodicLogSaver(TestCase):
 
     def test_write_log_file(self):
-        logger = periodicLoSaver()
+        BASE_PATH = os.path.join(os.path.expanduser('~'), '.codeTime')
+        FILE_PATH = os.path.join(BASE_PATH, '.sublime_logs')
+        logger = periodicLogSaver.PeriodicLogSaver(kwargs={'LOG_FILE_PATH': FILE_PATH})
         try:
             d = {'2020-09-19': {'temp1.py': [[1000, 2000], [3000, 3200]]},
                 '2020-09-20': {'temp2.py': [[5000, 6000]]}}  # noqa: E128, E501
 
-            BASE_PATH = os.path.abspath(os.path.dirname(__file__))
-            FILE_PATH = BASE_PATH + '/.temp_logs'
-
-            _ = logger.write_log_file(d, FILE_PATH)  # noqa: F841
+            _ = logger.write_log_file(d)  # noqa: F841
 
             arr = []
             for local_date, file_dict in d.items():

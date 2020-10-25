@@ -1,26 +1,21 @@
-language: python
-python:
-  - "3.6"      # current default Python on Travis CI
-  - "3.7"
+matrix:
+  include:
+    - os: linux
+      language: python
+
 services:
   - xvfb
+
 before_install:
   - curl -OL https://raw.githubusercontent.com/SublimeText/UnitTesting/master/sbin/travis.sh
-# command to install dependencies
+
 install:
-  - pip install -r requirements.txt
-  - python setup.py install
   - pip install flake8==3.5
-  - pip install black
-  - chmod +x travis.sh
   - sh travis.sh bootstrap
-  - sh travis.sh install_color_scheme_unit
-  - if ["$PCINSTALL" == true]; then /bin/sh travis.sh install_package_control; fi
-# command to run tests
+
 script:
   - flake8 --max-line-length=150
-  - sh travis.sh run_tests --coverage
-  - python -m pytest
+  - sh travis.sh run_tests
   - pytest --flake8
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 17641d65-2d77-4153-aa62-6e0d013e1c44
