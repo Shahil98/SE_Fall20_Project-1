@@ -1,20 +1,26 @@
-language:
-  python
+language: python
 python:
- - "3.7"
+  - "3.6"      # current default Python on Travis CI
+  - "3.7"
+services:
+  - xvfb
+before_install:
+  - curl -OL https://raw.githubusercontent.com/SublimeText/UnitTesting/master/sbin/travis.sh
+# command to install dependencies
 install:
- - pip install -U pip
- - pip install -r requirements.txt
- - pip install coverage
- - pip install codecov
-git:
-  depth: 50
-jobs:
-  include:
-  - name: "project-2"
-    python: "3.7"
+  - pip install -r requirements.txt
+  - python setup.py install
+  - pip install flake8==3.5
+  - pip install black
+  - chmod +x travis.sh
+  - /bin/sh travis.sh bootstrap
+  - /bin/sh travis.sh install_color_scheme_unit
+  - if ["$PCINSTALL" == true]; then /bin/sh travis.sh install_package_control; fi
+# command to run tests
 script:
-  - coverage run -m pytest -q test/test_class.py
+  - flake8 --max-line-length=150
+  - /bin/sh travis.sh run_tests --coverage
+  - python -m pytest
   - pytest --flake8
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 6ba38871-5113-4f85-8d7a-56b97151d932
