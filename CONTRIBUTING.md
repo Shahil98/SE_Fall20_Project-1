@@ -11,9 +11,9 @@ when you want to contribute to this repository, please send us an email and tell
 [Style Guide](#Style-guide)
 
 ## Purpose of Contributing
-* Maintain our product quality
-* Fix bugs and problems
-* Engage the community in working toward the best possible to our product
+* Maintain our product quality.
+* Fix bugs and problems.
+* Engage the community in working toward the best possible to our product.
 
 ## Code of Conduct
 All contributors should abide by the [code of conduct](CODE-OF-CONDUCT.md). Please read this carefully before contributing.
