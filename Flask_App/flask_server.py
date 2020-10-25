@@ -11,7 +11,7 @@ import os
 
 
 db = mysql.connector.connect(host='localhost', database='code_time', user='root', password='codetime')
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 bootstrap = Bootstrap(app)
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
@@ -50,14 +50,32 @@ def signup():
 @app.route('/dashboard/<uid>', methods=['GET'])
 def dashboard(uid):
     chart_data = sql_actions.retrieve_data_table_chart(db, uid)
-    bar_data = sql_actions.retrieve_data_pie_chart(db, uid)
+    pie_data = sql_actions.retrieve_data_pie_chart(db, uid)
     # [(user_id, file_name, start_date, end_date)]
     # Graph Plot Function
-    x_left = []
-    y_time = []
-    # labels for bars
-    tick_label = []
-    return render_template('dashboard.html')
+    table_data = []
+    for item in chart_data:
+        table_data.append((item[1], float(item[2])))
+
+    fig, axs = plt.subplots()
+    collabel = ("File Name", "Time Spend")
+    fig.patch.set_visible(False)
+    axs.table(cellText=table_data, colLabels=collabel, loc='center')
+    plt.show()
+    plt.savefig('Flask_App/static/images/table_chart.png')
+
+    pie_file_types = []
+    pie_file_total = []
+    # create pie chart
+    for item in pie_data:
+        pie_file_types.append(item[1])
+        pie_file_total.append(item[2])
+    plt.figure(figsize=(10, 7))
+    plt.pie(pie_file_total, labels=pie_file_types, autopct='%.2f')
+    # show plot
+    plt.show()
+    plt.savefig('Flask_App/static/images/pie_chart.png')
+    return render_template('dashboard.html', url='/static/images/')
     # return render_template('dashboard.html')
 
 
