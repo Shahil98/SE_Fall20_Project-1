@@ -8,6 +8,7 @@ import json
 import requests
 import mimetypes
 
+
 class PeriodicLogSaver(threading.Thread):
 
     def __init__(self, group=None, target=None, name=None, args=(), kwargs=None, verbose=None):  # noqa: E128
