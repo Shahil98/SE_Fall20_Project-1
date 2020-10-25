@@ -1,15 +1,18 @@
 import sublime
 import sys
 import os
-
+import io
 # from datetime import datetime as dt
 from unittest import TestCase
 # from unittest.mock import Mock, patch
 
 version = sublime.version()
 modules = sys.modules.keys()
+capturedOutput = io.StringIO()
+sys.stdout = capturedOutput
 print("\n$$$$$$\n", modules, "\n$$$$$$$$\n")
-sys.stdout.write(str(modules))
+sys.stdout = sys.__stdout__
+print('Captured', capturedOutput.getvalue())
 periodicLogSaver = sys.modules["SE_Fall20_Project-1.periodicLogSaver"]
 
 
