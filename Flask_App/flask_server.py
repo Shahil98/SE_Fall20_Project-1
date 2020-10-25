@@ -11,7 +11,7 @@ import os
 
 
 db = mysql.connector.connect(host='localhost', database='code_time', user='root', password='codetime')
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__)
 bootstrap = Bootstrap(app)
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
@@ -60,7 +60,7 @@ def dashboard(uid):
     fig.patch.set_visible(False)
     axs.table(cellText=table_data, colLabels=collabel, loc='center')
     plt.show()
-    plt.savefig('Flask_App/static/images/table_chart.png')
+    plt.savefig('static/table_chart.png')
     pie_file_types = []
     pie_file_total = []
 
@@ -72,8 +72,8 @@ def dashboard(uid):
     plt.pie(pie_file_total, labels=pie_file_types, autopct='%.2f')
     # show plot
     plt.show()
-    plt.savefig('Flask_App/static/images/pie_chart.png')
-    return render_template('dashboard.html', url='/static/images/')
+    plt.savefig('static/pie_chart.png')
+    return render_template('dashboard.html')
     # return render_template('dashboard.html')
 
 
@@ -84,7 +84,7 @@ def send(db, user_id):
     send_list = send_list.get_json()
     sql_actions.add_data_dashboard(db, send_list)
 
-    
+
 if __name__ == "__main__":
     server_ip = '0.0.0.0'
     server_port = 8080
