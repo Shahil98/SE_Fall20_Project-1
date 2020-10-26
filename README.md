@@ -67,3 +67,17 @@ For more information and guide on how to run tests, take a look at this [README.
 ## How to Contribute?
 
 Please take a look at our CONTRIBUTING.md where we provide instructions on contributing to the repo and taking the plugin development further.
+
+## In Phase 3
+## Experimentation Setup steps:
+ 
+1. Experimentation Setup steps
+2. Create a buggy implementation in three languages as we did for HW3.
+Setup code for a statistical test like "Scott Knot with nonparametric effect size and significance test" as we saw in class to compare different languages.
+
+## Conducting experiment with lab rats:
+1. Each participant will download sublime code editor.
+2. Each participant will try to debug the codes and time will be recorded for each language by a team member.
+3. Using the implementation of two teams' code time generated statistics try to rank languages in terms of difficulty for each implementation.
+4. Compare the ranks from the two implementations with the statistical analysis that we did using Scott Knot with nonparametric effect size and significance test and conclude which implementation provided better analysis.
+
