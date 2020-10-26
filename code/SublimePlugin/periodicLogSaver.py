@@ -8,6 +8,7 @@ import json
 import urllib
 import mimetypes
 
+
 class PeriodicLogSaver(threading.Thread):
 
     def __init__(self, group=None, target=None, name=None, args=(), kwargs=None, verbose=None):  # noqa: E128
@@ -55,15 +56,13 @@ class PeriodicLogSaver(threading.Thread):
                 for i in range(len(file_times_dict[file_name])):
                     json_insert_data["data"].append({'uid':user_id,"file_name": file_name,
                                                      "start_date": file_times_dict[file_name][i][0], "end_date": file_times_dict[file_name][i][1],  "file_type": file_type,})
-            
+
             data = json.dumps(json_insert_data).encode('utf-8')
             req = urllib.request.Request("http://152.46.17.237:8080/send", data=data, headers={'content-type': 'application/json'})
             response = urllib.request.urlopen(req)
-            #json_insert_data = json.dumps(json_insert_data)
-            #print(json_insert_data)
-            #requests.post(
-            #    "http://152.46.17.237:8080/send", json=json_insert_data)
-
+            # json_insert_data = json.dumps(json_insert_data)
+            # print(json_insert_data)
+            # requests.post("http://152.46.17.237:8080/send", json=json_insert_data)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
             print("periodicLogSaver:PeriodicLogSaver():write_log_file(): {error} on line number: {lno}".format(error=str(e), lno=str(exc_tb.tb_lineno)))  # noqa: E501
