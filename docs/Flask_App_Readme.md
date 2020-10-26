@@ -22,6 +22,17 @@ and call method '''dashboard()'''
 query the database using two function(retrieve_data_table_chart and retrieve_data_pie_chart) in the '''sql_actions.py'''. Once we get the user's information(e.g. File Name,
 Time spend for each file), we plot pie chart and table chart to analysis user's time spend on each file or project and render '''dashboard.html'''.
 
+### form.py
+create a form for login, in this case we just need uid, Datarequired means we do not accept empty string as input and the length should be 1-200  
+ 
+### sql_actions.py
+1. '''add_data_users()''' take the userID as input, insert this userID into Users table in our database.
+2. '''add_data_dashboard()''' take the user's usage data as input, insert this information into Dashboard talbe in our database.
+3. '''retrieve_data_table_chart()''' take userID as input, query the database the retrieve data from database and send back to method dashboard() to plot table chart.
+4. '''retrieve_data_pie_chart()''' take userID as input, query the database the retrieve data from database and send back to method dashboard() to plot pie chart.
+
+### create_db.py
+create tables in our database. For developer use only.
 ### base.html
 
 1. provide nav-bar template apply to every page in our application.
