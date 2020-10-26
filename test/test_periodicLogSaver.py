@@ -20,7 +20,7 @@ periodicLogSaver1 = sys.modules["SE_Fall20_Project-1.code.SublimePlugin.periodic
 class TestPeriodicLogSaver(TestCase):
 
     def test_write_log_file(self):
-        file_times_dict = {'test_file': []}
+        file_times_dict = {'test_file.py': []}
         start_time = dt.now().strftime('%Y-%m-%d %H:%M:%S')
         end_time = dt.now().strftime('%Y-%m-%d %H:%M:%S')
         file_times_dict['test_file.py'].append([start_time, end_time])
