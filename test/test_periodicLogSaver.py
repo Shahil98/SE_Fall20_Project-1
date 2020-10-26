@@ -13,7 +13,7 @@ version = sublime.version()
 # print("\n$$$$$$\n", modules, "\n$$$$$$$$\n")
 # sys.stdout = sys.__stdout__
 # print('Captured', capturedOutput.getvalue())
-# periodicLogSaver = sys.modules["SE_Fall20_Project-1.code.SublimePlugin.periodicLogSaver"]
+periodicLogSaver1 = sys.modules["SE_Fall20_Project-1.code.SublimePlugin.periodicLogSaver"]
 
 
 class TestPeriodicLogSaver(TestCase):
@@ -21,7 +21,7 @@ class TestPeriodicLogSaver(TestCase):
     def test_write_log_file(self):
         BASE_PATH = os.path.join(os.path.expanduser('~'), '.codeTime')
         FILE_PATH = os.path.join(BASE_PATH, '.sublime_logs')
-        logger = periodicLogSaver.PeriodicLogSaver(kwargs={'LOG_FILE_PATH': FILE_PATH})
+        logger = periodicLogSaver1.PeriodicLogSaver(kwargs={'LOG_FILE_PATH': FILE_PATH})
         try:
             d = {'2020-09-19': {'temp1.py': [[1000, 2000], [3000, 3200]]},
                 '2020-09-20': {'temp2.py': [[5000, 6000]]}}  # noqa: E128, E501
