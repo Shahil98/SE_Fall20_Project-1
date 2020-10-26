@@ -73,9 +73,11 @@ def dashboard(uid):
     file_type_duration = []
     for i in range(len(file_type_times)):
         file_type_names.append(file_type_times[i][1])
-        file_type_duration.append(file_type_times[i][2])
+        file_type_duration.append(int(file_type_times[i][2]))
     plt.figure(figsize=(10, 7))
-    plt.pie(file_type_duration, labels=file_type_names, autopct='%.2f')
+    print(file_type_names,file_type_duration)
+    plt.bar(file_type_names, file_type_duration)
+    plt.ylabel("Duration in minutes")
     # show plot
     plt.savefig('static/file_type_duration_pie_chart.png')
     return render_template('dashboard.html', title='Dashboard', time_data=time_data)
