@@ -40,8 +40,8 @@ def signup():
     unique_id = uuid.uuid4()
     unique_id = str(unique_id)
     sql_actions.add_data_users(db, unique_id)
-    return_data = {"your_id": unique_id}
-    return json.dumps(return_data)
+    #return_data = {"your_id": unique_id}
+    return(unique_id)
 
 
 @app.route('/dashboard/<uid>', methods=['GET'])
