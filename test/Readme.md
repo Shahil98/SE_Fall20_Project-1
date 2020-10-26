@@ -4,7 +4,7 @@
 ### Two types of testing techniques used:  
 **1. Whitebox Testing**
   - Used for unit-testing.
-  - Pytest used as the testing tool.
+  - Unit-test used as the testing tool.
   - Coverage criteria is functions.
 
 **2. Blackbox Testing**
