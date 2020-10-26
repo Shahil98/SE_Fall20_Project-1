@@ -1,0 +1,6 @@
+{
+  "timeout": 30,
+  "api_token": "74815790-d740-4344-b9c3-a505514edf88VHSda13oJOr5Iba4",
+  "python-env": "/Users/prithvirajchaudhuri/Desktop/CSC510/Project/venv/bin/python3",
+  "request-url": "http://localhost:8000/codetime/timelog/"
+}

@@ -1,15 +1,43 @@
 import sublime_plugin
+import sublime
 from datetime import datetime as dt
 import sys
-import requests
 from .periodicLogSaver import PeriodicLogSaver
 import json
 import mimetypes
+import urllib
+import platform
+import os
 
 # define local variables
 file_times_dict = {}
 periodic_log_save_timeout = 300  # seconds
 periodic_log_save_on = True
+
+user_id = ""
+
+if platform.system() == 'Windows':
+    DATA_FOLDER_PATH = os.path.join(os.getenv('APPDATA'), 'codeTime')
+else:
+    DATA_FOLDER_PATH = os.path.join(os.path.expanduser('~'), 'codeTime')
+
+if not os.path.exists(DATA_FOLDER_PATH):
+    os.makedirs(DATA_FOLDER_PATH)
+
+try:
+    f = open(DATA_FOLDER_PATH+"\\userid.txt", "r")
+    user_id = f.readline()
+    f.close()
+except:
+    print("Exception occured")
+    f = open(DATA_FOLDER_PATH+"\\userid.txt", "w")
+    #with urllib.request.urlopen("http://152.46.17.237:8080/signup") as url:
+    #    user_id_json = json.loads(url.read().decode())
+    user_id_json = requests.get("http://152.46.17.237:8080/signup")
+    user_id_json = user_id_json.json()
+    f.write(user_id_json["your_id"])
+    user_id = user_id_json["your_id"]
+    f.close()
 
 
 def when_activated(view):
@@ -115,6 +143,7 @@ class CustomEventListener(sublime_plugin.EventListener):
 
             file_name = view.file_name()
             end_time = dt.now().strftime('%Y-%m-%d %H:%M:%S')
+            print(file_times_dict)
             if file_name is not None and file_name in file_times_dict:
                 if file_times_dict[file_name][-1][1] is None:
                     file_times_dict[file_name][-1][1] = end_time
@@ -126,12 +155,13 @@ class CustomEventListener(sublime_plugin.EventListener):
                 else:
                     file_type = "other"
                 for i in range(len(file_times_dict[file_name])):
-                    json_insert_data["data"].append({"file_name": file_name, "file_type": file_type,
-                                                     "start_time": file_times_dict[file_name][i][0], "end_time": file_times_dict[file_name][i][1]})
-                json_insert_data = json.dumps(json_insert_data)
-                print(json_insert_data)
-                requests.post("http://152.46.17.237:8080/insert_data",
-                              json=json_insert_data)
+                    json_insert_data["data"].append({'uid':user_id,"file_name": file_name,
+                                                     "start_date": file_times_dict[file_name][i][0], "end_date": file_times_dict[file_name][i][1],  "file_type": file_type,})
+                
+                data = json.dumps(json_insert_data).encode('utf-8')
+                req = urllib.request.Request("http://152.46.17.237:8080/send", data=data,
+                             headers={'content-type': 'application/json'})
+                response = urllib.request.urlopen(req)
                 file_times_dict.pop(file_name)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -143,7 +173,7 @@ def plugin_loaded():
     print("Plugin Loaded")
     try:
         if periodic_log_save_on:
-            periodcLogSaver = PeriodicLogSaver(kwargs={'inMemoryLog': file_times_dict, 'timeout': periodic_log_save_timeout})  # noqa: E501
+            periodcLogSaver = PeriodicLogSaver(kwargs={'inMemoryLog': file_times_dict, 'timeout': periodic_log_save_timeout, 'user_id':user_id})  # noqa: E501
             periodcLogSaver.start()
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
