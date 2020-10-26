@@ -3,7 +3,7 @@ import sys
 import os
 import io
 from unittest import TestCase
-# from code.SublimePlugin import periodicLogSaver
+from code.SublimePlugin import periodicLogSaver
 # from unittest.mock import Mock, patch
 
 version = sublime.version()
@@ -13,7 +13,7 @@ version = sublime.version()
 # print("\n$$$$$$\n", modules, "\n$$$$$$$$\n")
 # sys.stdout = sys.__stdout__
 # print('Captured', capturedOutput.getvalue())
-periodicLogSaver = sys.modules["SE_Fall20_Project-1.code.SublimePlugin.periodicLogSaver"]
+# periodicLogSaver = sys.modules["SE_Fall20_Project-1.code.SublimePlugin.periodicLogSaver"]
 
 
 class TestPeriodicLogSaver(TestCase):

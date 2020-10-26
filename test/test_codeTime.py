@@ -4,7 +4,7 @@ import io
 from datetime import datetime as dt
 from unittest import TestCase
 from unittest.mock import Mock, patch
-# from code.SublimePlugin import codeTime
+from code.SublimePlugin import codeTime
 
 version = sublime.version()
 modules = sys.modules.keys()
@@ -13,7 +13,7 @@ sys.stdout = capturedOutput
 print("\n$$$$$$\n", modules, "\n$$$$$$$$\n")
 sys.stdout = sys.__stdout__
 print('Captured', capturedOutput.getvalue())
-codeTime1 = sys.modules["SE_Fall20_Project-1.code.SublimePlugin"]
+# codeTime1 = sys.modules["SE_Fall20_Project-1.code.SublimePlugin"]
 
 
 class TestFunctions(TestCase):
@@ -23,12 +23,12 @@ class TestFunctions(TestCase):
         view = Mock()
         view.filename.return_value = "sample.txt"
         # datetime = Mock()
-        codeTime1.codeTime.when_activated(view)
+        codeTime.when_activated(view)
         view.window.assert_called_once()
 
     def test_when_deactivated(self):
         view = Mock()
         view.file_name.return_value = "sample.txt"
         curr_date = dt.now().strftime('%Y-%m-%d')
-        codeTime1.codeTime.file_times_dict[curr_date] = {'sample.txt': ["1234", None]}
+        codeTime.file_times_dict[curr_date] = {'sample.txt': ["1234", None]}
         view.assert_called_once()
