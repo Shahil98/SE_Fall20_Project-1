@@ -53,21 +53,32 @@ def signup():
 def dashboard(uid):
     # We query the database using two function(retrieve_data_table_chart and retrieve_data_pie_chart) in the sql_actions
     time_data = sql_actions.retrieve_data_table_chart(db, uid)
-    pie_data = sql_actions.retrieve_data_pie_chart(db, uid)
+    number_of_files_data = sql_actions.retrieve_data_pie_chart(db, uid)
     # [(user_id, file_name, start_date, end_date)]
     pie_file_types = []
     pie_file_total = []
 
     # create pie chart
-    for item in pie_data:
+    for item in number_of_files_data:
         pie_file_types.append(item[1])
         pie_file_total.append(item[2])
     plt.figure(figsize=(10, 7))
     plt.pie(pie_file_total, labels=pie_file_types, autopct='%.2f')
     # show plot
-    plt.savefig('static/pie_chart.png')
+    plt.savefig('static/number_of_files_pie_chart.png')
 
-    return render_template('dashboard.html', title='Dashboard', pie_chart_data=pie_data, time_data=time_data)
+    total_time = 0
+    file_type_times = sql_actions.retrieve_data_graph_chart(db, uid)
+    file_type_names = []
+    file_type_duration = []
+    for i in range(len(file_type_times)):
+        file_type_names.append(file_type_times[i][1])
+        file_type_duration.append(file_type_times[i][2])
+    plt.figure(figsize=(10, 7))
+    plt.pie(file_type_duration, labels=file_type_names, autopct='%.2f')
+    # show plot
+    plt.savefig('static/file_type_duration_pie_chart.png')
+    return render_template('dashboard.html', title='Dashboard', time_data=time_data)
 
 
 @app.route('/send', methods=['POST'])
