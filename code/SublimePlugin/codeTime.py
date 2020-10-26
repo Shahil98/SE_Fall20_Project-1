@@ -147,6 +147,7 @@ class CustomEventListener(sublime_plugin.EventListener):
                 req = urllib.request.Request(
                     "http://152.46.17.237:8080/send", data=data, headers={'content-type': 'application/json'})
                 response = urllib.request.urlopen(req)
+                print(response)
                 file_times_dict.pop(file_name)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
