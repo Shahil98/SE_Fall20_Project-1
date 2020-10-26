@@ -2,7 +2,6 @@ import sublime_plugin
 import sublime
 from datetime import datetime as dt
 import sys
-import requests
 from .periodicLogSaver import PeriodicLogSaver
 import json
 import mimetypes
