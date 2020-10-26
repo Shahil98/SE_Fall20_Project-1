@@ -23,7 +23,7 @@ def add_data_users(db, data):
 
 def retrieve_data_table_chart(db, some_id):
     cursor = db.cursor()
-    qry1 = "SELECT D.uid, D.file_name, SUM(TIMESTAMPDIFF(MINUTE,D.start_date,D.end_date)) DIF FROM Dashboard D WHERE uid='{}' Group by D.uid,D.file_name".format(some_id)
+    qry1 = "SELECT D.uid, D.file_name, SUM(TIMESTAMPDIFF(MINUTE,D.start_date,D.end_date)) AS DIF FROM Dashboard D WHERE uid='{}' Group by D.uid,D.file_name".format(some_id)
     cursor.execute(qry1)
     records = cursor.fetchall()
     return records
@@ -32,7 +32,7 @@ def retrieve_data_table_chart(db, some_id):
 
 def retrieve_data_pie_chart(db, some_id):
     cursor = db.cursor()
-    qry1 = "SELECT D.uid,D.file_type,Count(D.file_type) FROM Dashboard D WHERE D.uid='{}' Group by D.uid,D.file_type".format(some_id)
+    qry1 = "SELECT D.uid,D.file_type,Count(D.file_type) FROM Dashboard D WHERE D.uid='{}' Group by D.file_type".format(some_id)
     cursor.execute(qry1)
     records = cursor.fetchall()
     return records
@@ -41,8 +41,18 @@ def retrieve_data_pie_chart(db, some_id):
 
 def retrieve_data_graph_chart(db, some_id):
     cursor = db.cursor()
-    qry1 = "SELECT D.uid,D.file_type,SUM(TIMESTAMPDIFF(MINUTE,D.start_date,D.end_date)) FROM Dashboard D WHERE D.uid='{}' Group by D.uid,D.filetype".format(some_id)
+    qry1 = "SELECT D.uid,D.file_type,SUM(TIMESTAMPDIFF(MINUTE,D.start_date,D.end_date)) AS DIF FROM Dashboard D WHERE D.uid='{}' Group by D.file_type".format(some_id)
     cursor.execute(qry1)
     records = cursor.fetchall()
     return records
     # [(uid1,file_type1,time_diff1),(uid1,file_type2,time_diff2)]
+
+def check_user(db,some_id):
+    cursor = db.cursor()
+    qry1 = "SELECT * FROM Users U WHERE U.uid='{}'".format(some_id)
+    cursor.execute(qry1)
+    records = cursor.fetchone()
+    if not records:
+        return -1
+    return records
+

@@ -1,4 +1,4 @@
-from flask import request, Flask, render_template, redirect, url_for
+from flask import request, Flask, render_template, redirect, url_for, flash
 import mysql.connector
 import sql_actions
 import uuid
@@ -29,9 +29,14 @@ def login():
     form = signupForm()
     # if user click submit on signup page
     if form.validate_on_submit():
-        uid = form.uid.data
+        some_id = form.uid.data
+        uid = sql_actions.check_user(db,some_id)
+        print(some_id)
         print(uid)
-        return redirect(url_for('dashboard', uid=uid))
+        if uid == -1:
+            flash('This userID does not exist, Please try again','error')
+            return redirect(url_for('login'))
+        return redirect(url_for('dashboard', uid=some_id))
     return render_template('login.html', form=form)
 
 

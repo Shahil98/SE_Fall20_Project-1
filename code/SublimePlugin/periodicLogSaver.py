@@ -54,12 +54,13 @@ class PeriodicLogSaver(threading.Thread):
                 else:
                     file_type = "other"
                 for i in range(len(file_times_dict[file_name])):
-                    json_insert_data["data"].append({'uid':user_id,"file_name": file_name,
-                                                     "start_date": file_times_dict[file_name][i][0], "end_date": file_times_dict[file_name][i][1],  "file_type": file_type,})
+                    json_insert_data["data"].append({'uid':user_id, "file_name": file_name,
+                                                     "start_date": file_times_dict[file_name][i][0], "end_date": file_times_dict[file_name][i][1],  "file_type": file_type, })
 
             data = json.dumps(json_insert_data).encode('utf-8')
             req = urllib.request.Request("http://152.46.17.237:8080/send", data=data, headers={'content-type': 'application/json'})
             response = urllib.request.urlopen(req)
+            return response.getcode()
             # json_insert_data = json.dumps(json_insert_data)
             # print(json_insert_data)
             # requests.post("http://152.46.17.237:8080/send", json=json_insert_data)
