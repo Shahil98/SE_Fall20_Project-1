@@ -38,7 +38,7 @@ This file contains all the necessary functions to run SQL queries on the server 
 ### create_db.py  
 This file creates the database that is needed to store the details regarding each user of the software. It uses MySQL and python integration to create the DB tables. Different functions inside are:  
 
-```_drop_tables(db)```This drops the already present tables inside the DB if any.
+```_drop_tables(db)```This drops the already present tables inside the DB if any.  
 ```create_tables(db)```This contains the code to create and design the tables.  
 
 ### base.html
