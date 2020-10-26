@@ -31,8 +31,6 @@ def login():
     if form.validate_on_submit():
         some_id = form.uid.data
         uid = sql_actions.check_user(db,some_id)
-        print(some_id)
-        print(uid)
         if uid == -1:
             flash('This userID does not exist, Please try again','error')
             return redirect(url_for('login'))
@@ -75,7 +73,6 @@ def dashboard(uid):
         file_type_names.append(file_type_times[i][1])
         file_type_duration.append(int(file_type_times[i][2]))
     plt.figure(figsize=(10, 7))
-    print(file_type_names,file_type_duration)
     plt.bar(file_type_names, file_type_duration)
     plt.ylabel("Duration in minutes")
     # show plot
@@ -86,7 +83,6 @@ def dashboard(uid):
 @app.route('/send', methods=['POST'])
 def send():
     send_list = request.get_json(force=True)
-    print(type(send_list))
     sql_actions.add_data_dashboard(db, send_list)
     return "Data added"
 
