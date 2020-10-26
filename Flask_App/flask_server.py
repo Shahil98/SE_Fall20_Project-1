@@ -53,30 +53,31 @@ def signup():
 
 @app.route('/dashboard/<uid>', methods=['GET'])
 def dashboard(uid):
+    # We query the database using two function(retrieve_data_table_chart and retrieve_data_pie_chart) in the sql_actions
     chart_data = sql_actions.retrieve_data_table_chart(db, uid)
     pie_data = sql_actions.retrieve_data_pie_chart(db, uid)
     # [(user_id, file_name, start_date, end_date)]
     # Graph Plot Function
     table_data = []
+    # 
     for item in chart_data:
         table_data.append((item[1], float(item[2])))
     fig, axs = plt.subplots()
     collabel = ("File Name", "Time Spend")
     fig.patch.set_visible(False)
     axs.table(cellText=table_data, colLabels=collabel, loc='center')
-    #plt.show()
     plt.savefig('static/table_chart.png')
     pie_file_types = []
     pie_file_total = []
 
     # create pie chart
+    # change the format of the data and plot it using matplotlib
     for item in pie_data:
         pie_file_types.append(item[1])
         pie_file_total.append(item[2])
     plt.figure(figsize=(10, 7))
     plt.pie(pie_file_total, labels=pie_file_types, autopct='%.2f')
     # show plot
-    #plt.show()
     plt.savefig('static/pie_chart.png')
     return render_template('dashboard.html')
     # return render_template('dashboard.html')
