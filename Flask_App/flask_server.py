@@ -54,7 +54,7 @@ def dashboard(uid):
     pie_file_total = []
     
     # create pie chart
-    for item in pie_chart_data:
+    for item in pie_data:
         pie_file_types.append(item[1])
         pie_file_total.append(item[2])
     plt.figure(figsize=(10, 7))
@@ -62,7 +62,7 @@ def dashboard(uid):
     # show plot
     plt.savefig('static/pie_chart.png')
     
-    return render_template('dashboard.html',title='Dashboard',pie_chart_data=pie_chart_data,time_data=time_data)
+    return render_template('dashboard.html',title='Dashboard',pie_chart_data=pie_data,time_data=time_data)
 
 
 @app.route('/send', methods=['POST'])
