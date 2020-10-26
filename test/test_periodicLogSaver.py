@@ -24,4 +24,5 @@ class TestPeriodicLogSaver(TestCase):
         start_time = dt.now().strftime('%Y-%m-%d %H:%M:%S')
         end_time = dt.now().strftime('%Y-%m-%d %H:%M:%S')
         file_times_dict['test_file.py'].append([start_time, end_time])
-        print(file_times_dict)
+        code = periodicLogSaver1.write_log_file(self, file_times_dict)
+        assert code == 200
