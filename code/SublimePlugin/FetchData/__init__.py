@@ -16,7 +16,7 @@ try:
     f.close()
 except:
     print("Exception occured")
-    f = open(DATA_FOLDER_PATH+"\\userid.txt", "w+")
+    f = open(DATA_FOLDER_PATH+"\\userid.txt", "w")
     user_id_json = requests.get("http://152.46.17.237:8080/signup")
     user_id_json = user_id_json.json()
     f.write(user_id_json["your_id"])
