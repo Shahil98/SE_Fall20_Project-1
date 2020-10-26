@@ -13,7 +13,7 @@ version = sublime.version()
 # print("\n$$$$$$\n", modules, "\n$$$$$$$$\n")
 # sys.stdout = sys.__stdout__
 # print('Captured', capturedOutput.getvalue())
-periodicLogSaver = sys.modules["SE_Fall20_Project-1.code.periodicLogSaver"]
+periodicLogSaver = sys.modules["SE_Fall20_Project-1.code.SublimePlugin.periodicLogSaver"]
 
 
 class TestPeriodicLogSaver(TestCase):

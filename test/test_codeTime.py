@@ -13,7 +13,7 @@ sys.stdout = capturedOutput
 print("\n$$$$$$\n", modules, "\n$$$$$$$$\n")
 sys.stdout = sys.__stdout__
 print('Captured', capturedOutput.getvalue())
-codeTime1 = sys.modules["SE_Fall20_Project-1.code"]
+codeTime1 = sys.modules["SE_Fall20_Project-1.code.SublimePlugin"]
 
 
 class TestFunctions(TestCase):
