@@ -6,7 +6,6 @@ from .periodicLogSaver import PeriodicLogSaver
 import json
 import mimetypes
 import urllib
-import requests
 import platform
 import os
 
