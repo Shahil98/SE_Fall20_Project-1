@@ -84,7 +84,8 @@ def dashboard(uid):
 @app.route('/send', methods=['POST'])
 def send():
     send_list = request.get_json(force=True)
-    sql_actions.add_data_dashboard(db, send_list['data'])
+    print(type(send_list))
+    sql_actions.add_data_dashboard(db, send_list)
     return "Data added"
 
 
