@@ -31,7 +31,7 @@ try:
 except:
     print("Exception occured")
     f = open(DATA_FOLDER_PATH+"\\userid.txt", "w")
-    #with urllib.request.urlopen("http://152.46.17.237:8080/signup") as url:
+    # with urllib.request.urlopen("http://152.46.17.237:8080/signup") as url:
     #    user_id_json = json.loads(url.read().decode())
     user_id_json = requests.get("http://152.46.17.237:8080/signup")
     user_id_json = user_id_json.json()
@@ -155,13 +155,14 @@ class CustomEventListener(sublime_plugin.EventListener):
                 else:
                     file_type = "other"
                 for i in range(len(file_times_dict[file_name])):
-                    json_insert_data["data"].append({'uid':user_id,"file_name": file_name,
-                                                     "start_date": file_times_dict[file_name][i][0], "end_date": file_times_dict[file_name][i][1],  "file_type": file_type,})
-                
+                    json_insert_data["data"].append({'uid':user_id, "file_name": file_name,
+                                                     "start_date": file_times_dict[file_name][i][0], "end_date": file_times_dict[file_name][i][1],  "file_type": file_type, })
+
                 data = json.dumps(json_insert_data).encode('utf-8')
                 req = urllib.request.Request("http://152.46.17.237:8080/send", data=data,
                              headers={'content-type': 'application/json'})
                 response = urllib.request.urlopen(req)
+                print(response)
                 file_times_dict.pop(file_name)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -173,7 +174,7 @@ def plugin_loaded():
     print("Plugin Loaded")
     try:
         if periodic_log_save_on:
-            periodcLogSaver = PeriodicLogSaver(kwargs={'inMemoryLog': file_times_dict, 'timeout': periodic_log_save_timeout, 'user_id':user_id})  # noqa: E501
+            periodcLogSaver = PeriodicLogSaver(kwargs={'inMemoryLog': file_times_dict, 'timeout': periodic_log_save_timeout, 'user_id': user_id})  # noqa: E501
             periodcLogSaver.start()
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()

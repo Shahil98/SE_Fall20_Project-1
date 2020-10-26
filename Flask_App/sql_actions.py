@@ -32,8 +32,17 @@ def retrieve_data_table_chart(db, some_id):
 
 def retrieve_data_pie_chart(db, some_id):
     cursor = db.cursor()
-    qry1 = "SELECT D.uid,D.file_type,Count(D.file_type) FROM Dashboard D WHERE D.uid='{}' Group by D.file_type".format(some_id)
+    qry1 = "SELECT D.uid,D.file_type,Count(D.file_type) FROM Dashboard D WHERE D.uid='{}' Group by D.uid,D.file_type".format(some_id)
     cursor.execute(qry1)
     records = cursor.fetchall()
     return records
     # [(uid1,file_type1,Count1),(uid1,file_type2,Count2)]
+
+
+def retrieve_data_graph_chart(db, some_id):
+    cursor = db.cursor()
+    qry1 = "SELECT D.uid,D.file_type,SUM(TIMESTAMPDIFF(MINUTE,D.start_date,D.end_date)) FROM Dashboard D WHERE D.uid='{}' Group by D.uid,D.filetype".format(some_id)
+    cursor.execute(qry1)
+    records = cursor.fetchall()
+    return records
+    # [(uid1,file_type1,time_diff1),(uid1,file_type2,time_diff2)]
