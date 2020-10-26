@@ -31,12 +31,9 @@ try:
 except:
     print("Exception occured")
     f = open(DATA_FOLDER_PATH+"\\userid.txt", "w")
-    #with urllib.request.urlopen("http://152.46.17.237:8080/signup") as url:
-    #    user_id_json = json.loads(url.read().decode())
-    user_id_json = requests.get("http://152.46.17.237:8080/signup")
-    user_id_json = user_id_json.json()
-    f.write(user_id_json["your_id"])
-    user_id = user_id_json["your_id"]
+    response = (urllib.request.urlopen("http://152.46.17.237:8080/signup").read())
+    user_id = (response.decode('utf-8'))
+    f.write(user_id)
     f.close()
 
 
