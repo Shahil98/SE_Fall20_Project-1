@@ -25,14 +25,6 @@
 6. Copy the [Context.sublime-menu](code/SublimePlugin/Config/Context.sublime-menu) file to your User Packages directory. To go to User Packages directory, navigate to `SublimePackagesFolder/User` folder.
 7. You are all set. The plugin is now active and is running in the background.
 
-
-## Usage
-
-1. Open Sublime Text.
-2. Open a file that you wish to work on.
-3. In the file pane, right click and select the option `View CodeTime Dashboard`.
-
-
 ## Setup (For contributors)
 
 > <strong>Note:</strong> Please install and use Sublime Text 3 only for development.
