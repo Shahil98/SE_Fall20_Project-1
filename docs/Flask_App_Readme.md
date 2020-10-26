@@ -14,6 +14,7 @@
 3. ```Flask_App/templates/base.html``` provide the template web format for every html page.
 
 ### flask_server.py
+
 1. ```index()``` method render the main page (index.html).
 2. ```login()``` method is called when user click "login" in the main page. It will call the '''form.py''' to create a form. When user click submit, it will take the input(userID)
 and call method '''dashboard()''' 
@@ -22,11 +23,13 @@ query the database using two function(retrieve_data_table_chart and retrieve_dat
 Time spend for each file), we plot pie chart and table chart to analysis user's time spend on each file or project and render '''dashboard.html'''.
 
 ### base.html
+
 1. provide nav-bar template apply to every page in our application.
 2. provide content format apply to every page in our application.
 3. provide page title(Codetime) apply to every page in our application.
 
 ### index.html
+
 1. ```login link```
 2. ```home link```
 
