@@ -1,6 +1,30 @@
 {% extends "base.html" %}
+
+{% block head %}
+
+{{ super() }}
+
+{% endblock %}
+
 {% block app_content %}
-    <h1> Here is the chart</h1>
-    <img src="{{url_for('static',filename='table_chart.png')}}" alt="table_chart" />
-    <img src="{{url_for('static',filename='pie_chart.png')}}" alt="pie_chart">
+
+
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">File Name</th>
+                      <th scope="col">Time Spent in minutes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for row in time_data %}
+                    <tr>
+                      <td>{{row[1]}}</td>
+                      <td>{{row[2]}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+<img class="img-responsive" src="{{ url_for('static',filename='pie_chart.png') }}" alt="Chania" width="640" height="640"> 
+                
 {% endblock %} 

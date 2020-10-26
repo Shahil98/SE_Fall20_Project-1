@@ -24,13 +24,6 @@ def index():
     return render_template("index.html", title="Code Time")
 
 
-@app.route("/insert_data", methods=["post"])
-def insert_data():
-    data = request.get_json()
-    print(data)
-    return render_template("index.html", title="Code Time")
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = signupForm()
@@ -53,10 +46,14 @@ def signup():
 
 @app.route('/dashboard/<uid>', methods=['GET'])
 def dashboard(uid):
-    chart_data = sql_actions.retrieve_data_table_chart(db, uid)
-    pie_data = sql_actions.retrieve_data_pie_chart(db, uid)
+    time_data = sql_actions.retrieve_data_table_chart(db, uid)
+    pie_chart_data = sql_actions.retrieve_data_pie_chart(db, uid)
     # [(user_id, file_name, start_date, end_date)]
+
+
+
     # Graph Plot Function
+    """
     table_data = []
     for item in chart_data:
         table_data.append((item[1], float(item[2])))
@@ -66,11 +63,12 @@ def dashboard(uid):
     axs.table(cellText=table_data, colLabels=collabel, loc='center')
     #plt.show()
     plt.savefig('static/table_chart.png')
+    """
     pie_file_types = []
     pie_file_total = []
-
+    
     # create pie chart
-    for item in pie_data:
+    for item in pie_chart_data:
         pie_file_types.append(item[1])
         pie_file_total.append(item[2])
     plt.figure(figsize=(10, 7))
@@ -78,16 +76,16 @@ def dashboard(uid):
     # show plot
     #plt.show()
     plt.savefig('static/pie_chart.png')
-    return render_template('dashboard.html')
+    
+    return render_template('dashboard.html',title='Dashboard',pie_chart_data=pie_chart_data,time_data=time_data)
     # return render_template('dashboard.html')
 
 
 @app.route('/send', methods=['POST'])
 def send():
     send_list = request.get_json(force=True)
-    send_list = json.loads(send_list)
     print(send_list, type(send_list))
-    sql_actions.add_data_dashboard(db, send_list)
+    sql_actions.add_data_dashboard(db, send_list['data'])
     return "Data added"
 
 
