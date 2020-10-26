@@ -1,3 +1,11 @@
+<p align="center">
+  <img
+    width="200"
+    src="https://raw.githubusercontent.com/Shahil98/SE_Fall20_Project-1/master/logo.png"
+    alt="CodeTime"
+  />
+</p>
+
 # CodeTime - A time tracking plugin for text editors [G10 Project 2]
 [![DOI](https://zenodo.org/badge/295515546.svg)](https://zenodo.org/badge/latestdoi/295515546)
 [![Build Status](https://travis-ci.org/Shahil98/SE_Fall20_Project-1.svg?branch=master)](https://travis-ci.org/Shahil98/SE_Fall20_Project-1)
