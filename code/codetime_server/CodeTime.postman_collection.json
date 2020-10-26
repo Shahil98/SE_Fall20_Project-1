@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "c2783dee-42e3-4261-a65d-5743df35e914",
+		"name": "CodeTime",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"adarsh1\",\n    \"password\": \"adarsh\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/codetime/user/?type=signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"codetime",
+						"user",
+						""
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "signup"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"adarsh1\",\n    \"password\": \"adarsh\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/codetime/user/?type=login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"codetime",
+						"user",
+						""
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "login"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Timelogs",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n    \"file_name\": \"test.java\",\n    \"file_extension\": \"java\",\n    \"detected_language\": \"java\",\n    \"log_date\": \"2020-10-01\",\n    \"log_timestamp\": \"160000290\",\n    \"api_token\": \"74815790-d740-4344-b9c3-a505514edf88VHSda13oJOr5Iba4\"\n},{\n    \"file_name\": \"test.py\",\n    \"file_extension\": \"py\",\n    \"detected_language\": \"python\",\n    \"log_date\": \"2020-10-01\",\n    \"log_timestamp\": \"160000290\",\n    \"api_token\": \"74815790-d740-4344-b9c3-a505514edf88VHSda13oJOr5Iba4\"\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/codetime/timelog/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"codetime",
+						"timelog",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get timelogs for particular api_token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/codetime/timelog/?api_token=74815790-d740-4344-b9c3-a505514edf88VHSda13oJOr5Iba4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"codetime",
+						"timelog",
+						""
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "74815790-d740-4344-b9c3-a505514edf88VHSda13oJOr5Iba4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user details from api_token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/codetime/user/?api_token=74815790-d740-4344-b9c3-a505514edf88VHSda13oJOr5Iba4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"codetime",
+						"user",
+						""
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "74815790-d740-4344-b9c3-a505514edf88VHSda13oJOr5Iba4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "File extension wise summary for particular api_token/user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/codetime/summary/?api_token=74815790-d740-4344-b9c3-a505514edf88VHSda13oJOr5Iba4&type=extension",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"codetime",
+						"summary",
+						""
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "74815790-d740-4344-b9c3-a505514edf88VHSda13oJOr5Iba4"
+						},
+						{
+							"key": "type",
+							"value": "extension"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
