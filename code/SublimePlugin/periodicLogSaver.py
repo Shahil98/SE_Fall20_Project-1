@@ -5,9 +5,8 @@ import sublime
 from datetime import datetime as dt
 import sys
 import json
-import urllib
+import requests
 import mimetypes
-
 
 class PeriodicLogSaver(threading.Thread):
 
@@ -56,14 +55,10 @@ class PeriodicLogSaver(threading.Thread):
                 for i in range(len(file_times_dict[file_name])):
                     json_insert_data["data"].append({"file_name": file_name, "file_type": file_type,
                                                      "start_time": file_times_dict[file_name][i][0], "end_time": file_times_dict[file_name][i][1]})
-                data = urllib.parse.urlencode(json_insert_data)
-                data = data.encode('ascii')
-                with urllib.request.urlopen("http://152.46.17.237:8080/insert_data", data) as f:
-                    print(f.read().decode('utf-8'))
-                    #json_insert_data = json.dumps(json_insert_data)
-                    #print(json_insert_data)
-                    #requests.post(
-                    #    "http://152.46.17.237:8080/insert_data", json=json_insert_data)
+            json_insert_data = json.dumps(json_insert_data)
+            print(json_insert_data)
+            requests.post(
+                "http://152.46.17.237:8080/insert_data", json=json_insert_data)
 
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
