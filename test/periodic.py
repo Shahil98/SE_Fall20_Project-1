@@ -11,7 +11,7 @@ def tester():
   req = urllib.request.Request("http://152.46.17.237:8080/send", data=body1, headers={'content-type': 'application/json'})
   response = urllib.request.urlopen(req)
   code1 = response.getcode()
-  assert code1 == 200
+  return code
   
   
 def tester_tester():
