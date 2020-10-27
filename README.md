@@ -33,6 +33,24 @@
 5. Clone this repository inside `SublimePackagesFolder` (This makes sure that Sublime recognizes our plugin package to execute).
 6. Copy the [Context.sublime-menu](code/SublimePlugin/Config/Context.sublime-menu) file to your User Packages directory. To go to User Packages directory, navigate to `SublimePackagesFolder/User` folder.
 7. You are all set. The plugin is now active and is running in the background.
+8. Once you open a file for the first time in sublime a user id will be generated in the folder "<User>/APPDATA/Roaming/codeTime/userid.txt".
+9. Use this user id to login to "http://152.46.17.237:8080" and see the statistics from the plugin.
+
+## ❗❗❗ In Phase 3 ❗❗❗ 👇👇👇
+
+## Experimentation goal:
+To compare between this implementation of code time, second team's implementation of code time and the results that can be obtained by observing manually. 
+
+## 🔑Experimentation Setup steps:
+1. Create a buggy implementation in three languages as we did for HW3 or you can use reuse the same codes.
+2. Setup code for a statistical test like "Scott Knot with nonparametric effect size and significance test" as we saw in class to compare different languages. Refer to this code: [sk.py](https://gist.github.com/timm/41b3a8790c1adce26d63c5874fbea393) by professor menzies.
+
+## 💭Conducting experiment with lab rats:
+1. Each participant will download sublime code editor.
+2. Each participant will try to debug the codes and time will be recorded for each language by a team member.
+3. Using the implementation of two teams' code time generated statistics try to rank languages in terms of difficulty for each implementation.
+4. Compare the ranks from the two implementations with the statistical analysis that we did using Scott Knot with nonparametric effect size and significance test and conclude which implementation provided better analysis.
+
 
 ## 🔨Setup (For contributors)
 
@@ -43,43 +61,9 @@
 3. Run `python setup.py install` to install all the dependencies.
 4. Back in Sublime Text, Open Package Control by pressing `ctrl+shift+p (Win/Linux)` or `cmd+shift+p (Mac)`. Navigate to option `Package Control: Install Package`. Install  packages: `SublimeLinter`, `SublimeLinter-flake8`, `sublack`, `UnitTesting`.
 5. Navigate to `Package Settings` option under `Preferences` in Menu bar. For `Mac` users, the `Preferences` option will be found under `Sublime Text` in Menu bar.
-6. Once under Package Settings, move to `SublimeLinter > Settings`. You will see that a file with the name `SublimeLinter.sublime-settings - User` opens up. Copy the following code snippet to ignore a linting error related to Tabs vs Spaces war :)
-```
-// SublimeLinter Settings - User
-{
-    "linters": {
-        "flake8": {
-            "args": ["--ignore=W191"],
-        }
-    }
-}
+6. Run the flask app locally by using the command 'python3 flask_server.py' inside the Flask_App folder and also appropriately change the request address in codeTime.py and periodicLogSaver.py. You can also run the server on any other machine similarly. 
 
-```
-
-## ❓How to Run Tests? (For contributors)
-
-1. For local execution of the tests, make sure that the Sublime package `UnitTesting` is installed. 
-2. Navigate to a test file in `tests` folder that you want to run your tests for. 
-3. Open Package Control and type in `UnitTesting: Test Current Package`. 
-4. The tests will run and a small output panel pops up showing that the tests are running.
-
-For more information and guide on how to run tests, take a look at this [README.md by randy3k](https://github.com/randy3k/UnitTesting/blob/master/README.md). For examples on how to write tests for sublime plugin, take a look at this [Repo by randy3k](https://github.com/randy3k/UnitTesting-example).
 
 ## ✨How to Contribute?
 
 Please take a look at our CONTRIBUTING.md where we provide instructions on contributing to the repo and taking the plugin development further.
-
-## ❗❗❗ In Phase 3 ❗❗❗ 👇👇👇
-
-## 🔑Experimentation Setup steps:
- 
-1. Experimentation Setup steps
-2. Create a buggy implementation in three languages as we did for HW3.
-Setup code for a statistical test like "Scott Knot with nonparametric effect size and significance test" as we saw in class to compare different languages.
-
-## 💭Conducting experiment with lab rats:
-1. Each participant will download sublime code editor.
-2. Each participant will try to debug the codes and time will be recorded for each language by a team member.
-3. Using the implementation of two teams' code time generated statistics try to rank languages in terms of difficulty for each implementation.
-4. Compare the ranks from the two implementations with the statistical analysis that we did using Scott Knot with nonparametric effect size and significance test and conclude which implementation provided better analysis.
-
