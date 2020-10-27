@@ -30,9 +30,9 @@ def login():
     # if user click submit on signup page
     if form.validate_on_submit():
         some_id = form.uid.data
-        uid = sql_actions.check_user(db,some_id)
+        uid = sql_actions.check_user(db, some_id)
         if uid == -1:
-            flash('This userID does not exist, Please try again','error')
+            flash('This userID does not exist, Please try again', 'error')
             return redirect(url_for('login'))
         return redirect(url_for('dashboard', uid=some_id))
     return render_template('login.html', form=form)
