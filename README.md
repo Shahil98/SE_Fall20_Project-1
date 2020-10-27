@@ -12,7 +12,7 @@
 ![GitHub](https://img.shields.io/github/license/Shahil98/SE_Fall20_Project-1)
 ![GitHub issues](https://img.shields.io/github/issues/Shahil98/SE_Fall20_Project-1)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Shahil98/SE_Fall20_Project-1)
-[![codecov](https://codecov.io/gh/Shahil98/SE_Fall20_Project-1/branch/master/graph/badge.svg?token=EIN9L33BIG)](undefined)
+[![codecov]([![codecov](https://codecov.io/gh/Shahil98/SE_Fall20_Project-1/branch/master/graph/badge.svg?token=EIN9L33BIG)](undefined))
 
 ## 🌐About CodeTime
 
