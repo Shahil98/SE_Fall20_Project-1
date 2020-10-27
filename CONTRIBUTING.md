@@ -10,15 +10,15 @@ when you want to contribute to this repository, please send us an email and tell
 
 [Style Guide](#Style-guide)
 
-## Purpose of Contributing
+## ⛄ Purpose of Contributing
 * Maintain our product quality.
 * Fix bugs and problems.
 * Engage the community in working toward the best possible to our product.
 
-## Code of Conduct
+## ❄️ Code of Conduct
 All contributors should abide by the [code of conduct](CODE-OF-CONDUCT.md). Please read this carefully before contributing.
 
-## Pull Request Submission Guidelines
+## ⚡ Pull Request Submission Guidelines
 ###  Install Git
 First thing first, you should install and configure the [Git](https://git-scm.com/) on your local machine.
 
@@ -32,7 +32,7 @@ Once done and you have the code locally on the disk, you can get started. We adv
 ### Write Code
 For writing the code just follow our Python and JavaScript style guides. If there is something unclear of the style, just look at existing code which might help you to understand it better.
 
-## Style Guide 
+## 💬 Style Guide 
 
 ### Python Style Guide
 * Use [Flake8](https://flake8.pycqa.org/en/latest/) as linter for Python codes
