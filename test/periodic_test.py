@@ -1,5 +1,5 @@
-import test.periodic
+import test.periodic as pt
 
 
-code = periodic.tester()
+code = pt.tester()
 assert code == 200
