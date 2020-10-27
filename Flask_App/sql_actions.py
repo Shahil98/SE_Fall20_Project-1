@@ -47,7 +47,8 @@ def retrieve_data_graph_chart(db, some_id):
     return records
     # [(uid1,file_type1,time_diff1),(uid1,file_type2,time_diff2)]
 
-def check_user(db,some_id):
+
+def check_user(db, some_id):
     cursor = db.cursor()
     qry1 = "SELECT * FROM Users U WHERE U.uid='{}'".format(some_id)
     cursor.execute(qry1)
@@ -55,4 +56,3 @@ def check_user(db,some_id):
     if not records:
         return -1
     return records
-

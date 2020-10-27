@@ -141,8 +141,7 @@ class CustomEventListener(sublime_plugin.EventListener):
                 for i in range(len(file_times_dict[file_name])):
                     if(file_times_dict[file_name][i][1] == None):
                         file_times_dict[file_name][i][1] = dt.now().strftime('%Y-%m-%d %H:%M:%S')
-                    json_insert_data.append({'uid': user_id, "file_name": file_name,
-                                             "start_date": file_times_dict[file_name][i][0], "end_date": file_times_dict[file_name][i][1],  "file_type": file_type})
+                    json_insert_data.append({'uid': user_id, "file_name": file_name, "start_date": file_times_dict[file_name][i][0], "end_date": file_times_dict[file_name][i][1],  "file_type": file_type})
                 data = json.dumps(json_insert_data).encode('utf-8')
                 req = urllib.request.Request(
                     "http://152.46.17.237:8080/send", data=data, headers={'content-type': 'application/json'})

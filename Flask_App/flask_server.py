@@ -43,7 +43,7 @@ def signup():
     unique_id = uuid.uuid4()
     unique_id = str(unique_id)
     sql_actions.add_data_users(db, unique_id)
-    #return_data = {"your_id": unique_id}
+    # return_data = {"your_id": unique_id}
     return(unique_id)
 
 
@@ -65,7 +65,7 @@ def dashboard(uid):
     # show plot
     plt.savefig('static/number_of_files_pie_chart.png')
 
-    total_time = 0
+    # total_time = 0
     file_type_times = sql_actions.retrieve_data_graph_chart(db, uid)
     file_type_names = []
     file_type_duration = []
