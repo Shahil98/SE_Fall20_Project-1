@@ -19,6 +19,6 @@ script:
 #  - flake8 --ignore=E501,W291,E722,E226,F401
   - coverage run test/test_periodicLogSaver.py
   - sh travis.sh run_tests
-  - kcov travis.sh
+  - kcov /tmp/frodo travis.sh
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 17641d65-2d77-4153-aa62-6e0d013e1c44
