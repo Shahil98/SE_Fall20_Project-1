@@ -6,9 +6,9 @@
   />
 </p>
 
->**Automated:** Keeps track of all your files :rocket:
->**Convenience:** Silently works in the background :recycle:
->**Support:** Helpful analysis for future projects :100:
+>**Automated:** Keeps track of all your files :rocket:  
+>**Convenience:** Silently works in the background :recycle:  
+>**Support:** Helpful analysis for future projects :100:  
 >**Easy:** Interactive web UI :computer:  
 
 # CodeTime - A time tracking plugin for text editors [G10 Project 2]
