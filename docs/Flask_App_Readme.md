@@ -1,12 +1,5 @@
 # About Flask App
 
-
-
-
-## approach
-
-
-
 ## Code Description
 
 1. ```Flask_App/flask_server.py``` implements the main server. 
