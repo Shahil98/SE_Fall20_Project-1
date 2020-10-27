@@ -20,5 +20,6 @@ install:
 script:
 #  - flake8 --ignore=E501,W291,E722,E226,F401
   - sh travis.sh run_tests
+  - coverage run travis.sh run_tests
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 17641d65-2d77-4153-aa62-6e0d013e1c44
