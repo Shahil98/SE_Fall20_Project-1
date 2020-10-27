@@ -2,13 +2,13 @@
 {% block app_content %}
 <h1>Login</h1>
 {% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
+{% if messages %}
+<ul class=flashes>
     {% for message in messages %}
-      <li>{{ message }}</li>
+    <li>{{ message }}</li>
     {% endfor %}
-    </ul>
-  {% endif %}
+</ul>
+{% endif %}
 {% endwith %}
 <p>Please Enter Your Unique ID</p>
 <div class="row">
@@ -17,4 +17,4 @@
         {{ wtf.quick_form(form) }}
     </div>
 </div>
-{% endblock %} 
+{% endblock %}

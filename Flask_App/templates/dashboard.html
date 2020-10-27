@@ -9,33 +9,35 @@
 {% block app_content %}
 <div class="row">
 
-<div class="well well-lg">Table describing time spent in minutes for each file</div>
+    <div class="well well-lg">Table describing time spent in minutes for each file</div>
 
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th scope="col">File Name</th>
-                      <th scope="col">Time Spent in minutes</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for row in time_data %}
-                    <tr>
-                      <td>{{row[1]}}</td>
-                      <td>{{row[2]}}</td>
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">File Name</th>
+                <th scope="col">Time Spent in minutes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in time_data %}
+            <tr>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 <div class="row">
-<div class="well well-lg">Bar chart describing time spent for each file type</div>
-<img class="img-responsive" src="{{ url_for('static',filename='file_type_duration_pie_chart.png') }}" alt="Pie Chart" width="640" height="640"> 
-</div>   
+    <div class="well well-lg">Bar chart describing time spent for each file type</div>
+    <img class="img-responsive" src="{{ url_for('static',filename='file_type_duration_pie_chart.png') }}"
+        alt="Pie Chart" width="640" height="640">
+</div>
 
 <div class="row">
-<div class="well well-lg">Pie chart displaying ratio of number of files used</div>
-<img class="img-responsive" src="{{ url_for('static',filename='number_of_files_pie_chart.png') }}" alt="Bar Chart" width="640" height="640"> 
-</div>             
-{% endblock %} 
+    <div class="well well-lg">Pie chart displaying ratio of number of files used</div>
+    <img class="img-responsive" src="{{ url_for('static',filename='number_of_files_pie_chart.png') }}" alt="Bar Chart"
+        width="640" height="640">
+</div>
+{% endblock %}
