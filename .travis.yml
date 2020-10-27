@@ -14,7 +14,7 @@ install:
   - pip install -U pip
   - pip install -r requirements.txt
   - pip install codecov
-  - apt-get install -y kcov
+  - sudo apt-get install -y kcov
   - sh travis.sh bootstrap
 
 script:
