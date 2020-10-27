@@ -17,7 +17,7 @@ install:
 
 script:
 #  - flake8 --ignore=E501,W291,E722,E226,F401
-  - coverage run test/test_periodicLogSaver.py
+#  - coverage run test/test_periodicLogSaver.py
   - sh travis.sh run_tests
   - kcov /tmp/frodo travis.sh
 after_success:
