@@ -1,7 +1,7 @@
 import sublime
 import sys
 import os
-# import io
+import io
 from unittest import TestCase
 from datetime import datetime as dt
 from code.SublimePlugin import periodicLogSaver
@@ -25,6 +25,10 @@ class TestPeriodicLogSaver(TestCase):
         end_time = dt.now().strftime('%Y-%m-%d %H:%M:%S')
         file_times_dict['test_file.py'].append([start_time, end_time])
         logger = periodicLogSaver1.PeriodicLogSaver(kwargs={'user_id': '123-test-456'})
-        # code = logger.write_log_file(file_times_dict)
+        code = logger.write_log_file(file_times_dict)
+        capturedOutput = io.StringIO()
+        print("\n==========================\n", code, "\n==========================\n")
+        sys.stdout = sys.__stdout__
+        print('Captured: ', capturedOutput.getvalue())
         code = 200
         assert code == 200
