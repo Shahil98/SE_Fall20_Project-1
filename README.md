@@ -16,9 +16,7 @@
 
 ## 🌐About CodeTime
 
-- CodeTime is a plugin for Sublime Text editor which will help developers to track the amount of time spent on multiple files, programming languages and projects. The user will be able to perform the analysis of the time spent to improve the productivity by analysing the most frequently used programming language, most productive time of the day, files in project which took maximum time for development and projects which took maximum time for completion.
-
-- The developer can add the project deadlines to the plugin and the plugin can help developers stick to their goal by predicting the finish time of the project based on the data gathered from the user. Multiple developers can compete with each other through a leaderboard where a leaderboard will display the ranking of most productive developer and admin/manager can easily monitor the productivity of each and every developer with the help of a common interface.
+- CodeTime is a plugin for Sublime Text editor which will help developers to track the amount of time spent on multiple files, programming languages and projects. The user will be able to perform the analysis of the time spent to improve the productivity by analysing the most frequently used programming language, files in project which took maximum time for development and projects which took maximum time for completion.
 
 # ▶</strong> Youtube Link
 [![CodeTime Promo Video](https://raw.githubusercontent.com/Shahil98/SE_Fall20_Project-1/master/docs/youtube.png)](https://www.youtube.com/watch?v=-fZPolH9YB8&feature=youtu.be)
