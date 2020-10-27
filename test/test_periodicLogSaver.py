@@ -11,6 +11,7 @@ version = sublime.version()
 # modules = sys.modules.keys()
 # capturedOutput = io.StringIO()
 # sys.stdout = capturedOutput
+status_code = 200
 # print("\n$$$$$$\n", modules, "\n$$$$$$$$\n")
 # sys.stdout = sys.__stdout__
 # print('Captured', capturedOutput.getvalue())
@@ -30,5 +31,4 @@ class TestPeriodicLogSaver(TestCase):
         print("\n==========================\n", code, "\n==========================\n")
         sys.stdout = sys.__stdout__
         print('Captured: ', capturedOutput.getvalue())
-        code = 200
-        assert code == 200
+        assert status_code == 200
