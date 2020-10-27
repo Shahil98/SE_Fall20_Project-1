@@ -54,5 +54,5 @@ This file creates the database that is needed to store the details regarding eac
 
 
 ### dashboard.html
-
+This html file is rendered using the ```dashboard()``` function to display the statistics.
 
