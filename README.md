@@ -6,6 +6,11 @@
   />
 </p>
 
+>**Automated:** Keeps track of all your files :rocket:
+>**Convenience:** Silently works in the background :recycle:
+>**Support:** Helpful analysis for future projects :100:
+>**Easy:** Interactive web UI :computer:  
+
 # CodeTime - A time tracking plugin for text editors [G10 Project 2]
 [![DOI](https://zenodo.org/badge/295515546.svg)](https://zenodo.org/badge/latestdoi/295515546)
 [![Build Status](https://travis-ci.org/Shahil98/SE_Fall20_Project-1.svg?branch=master)](https://travis-ci.org/Shahil98/SE_Fall20_Project-1)
