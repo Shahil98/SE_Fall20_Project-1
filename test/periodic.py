@@ -13,10 +13,3 @@ def tester():
     code1 = response.getcode()
     print(code1)
     return code
-
-
-def tester_tester():
-    req = urllib.request.Request("http://152.46.17.237:8080/send", data=body1, headers={'content-type': 'application/json'})
-    response = urllib.request.urlopen(req)
-    code1 = response.getcode()
-    assert code1 == 200
