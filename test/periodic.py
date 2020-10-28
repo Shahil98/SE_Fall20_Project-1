@@ -13,3 +13,15 @@ def tester():
     code1 = response.getcode()
     print(code1)
     return code
+<<<<<<< HEAD
+=======
+
+
+def tester_tester():
+    body = [{"file_name": "saurabh.py", "file_type": ".py"}]
+    body1 = json.dumps(body).encode('utf-8')
+    req = urllib.request.Request("http://152.46.17.237:8080/send", data=body1, headers={'content-type': 'application/json'})
+    response = urllib.request.urlopen(req)
+    code1 = response.getcode()
+    return code1
+>>>>>>> 59c3ecdd2f39272294565df51b35eb88bcd88a68
