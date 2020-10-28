@@ -9,4 +9,4 @@ def tester(data):
     response = urllib.request.urlopen(req)
     code1 = response.getcode()
     print(code1)
-    return code
+    return code1
